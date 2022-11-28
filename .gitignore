@@ -83,3 +83,6 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# Mobile Programming course project reports
+Project_Reports
