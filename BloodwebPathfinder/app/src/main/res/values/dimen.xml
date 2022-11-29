@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="node_radius">128dp</dimen>
+    <dimen name="edge_width">4dp</dimen>
+    <dimen name="edge_length">32dp</dimen>
+    <dimen name="fragment_node">40dp</dimen>
+    <dimen name="center_node">20dp</dimen>
+</resources>

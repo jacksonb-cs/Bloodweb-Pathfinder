@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/jacks/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/jacks/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/drawable/center_node.xml" value="0.1675" />
+        <entry key="..\:/Users/jacks/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/drawable/node_ring.xml" value="0.1" />
+        <entry key="..\:/Users/jacks/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/layout/activity_main.xml" value="0.16988416988416988" />
+        <entry key="..\:/Users/jacks/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/layout/fragment_web.xml" value="0.264" />
       </map>
     </option>
   </component>
