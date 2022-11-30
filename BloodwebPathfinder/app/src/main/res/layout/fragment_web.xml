@@ -129,16 +129,48 @@
         android:layout_marginLeft="@dimen/half_edge_length" />
 
     <!-- 2 o'clock -->
-    <!-- TODO -->
+    <ImageView
+        android:id="@+id/node_1_1"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintBottom_toTopOf="@+id/node_1_2"
+        app:layout_constraintEnd_toStartOf="@+id/node_1_2"
+        android:layout_marginBottom="@dimen/quarter_edge_length"/>
 
     <!-- 2:30 -->
-    <!-- TODO -->
+    <ImageView
+        android:id="@+id/node_1_2"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintBottom_toBottomOf="@+id/node_0_1"
+        app:layout_constraintStart_toEndOf="@+id/node_0_1"
+        android:layout_marginLeft="@dimen/edge_length" />
 
     <!-- 3:30 -->
-    <!-- TODO -->
+    <ImageView
+        android:id="@+id/node_1_3"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintStart_toEndOf="@+id/node_0_2"
+        app:layout_constraintTop_toTopOf="@+id/node_0_2"
+        android:layout_marginLeft="@dimen/edge_length" />
 
     <!-- 4 o'clock -->
-    <!-- TODO -->
+    <ImageView
+        android:id="@+id/node_1_4"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintEnd_toStartOf="@+id/node_1_3"
+        app:layout_constraintTop_toBottomOf="@+id/node_1_3"
+        android:layout_marginTop="@dimen/quarter_edge_length" />
 
     <!-- Bottom right (5:30) -->
     <ImageView

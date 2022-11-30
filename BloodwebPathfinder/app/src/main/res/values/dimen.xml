@@ -2,8 +2,10 @@
 <resources>
     <dimen name="node_radius">128dp</dimen>
     <dimen name="edge_width">4dp</dimen>
+    <dimen name="quarter_edge_length">8dp</dimen>
     <dimen name="half_edge_length">16dp</dimen>
     <dimen name="edge_length">32dp</dimen>
+    <dimen name="edge_1.5_length">48dp</dimen>
     <dimen name="double_edge_length">64dp</dimen>
     <dimen name="fragment_node">40dp</dimen>
     <dimen name="center_node">20dp</dimen>
