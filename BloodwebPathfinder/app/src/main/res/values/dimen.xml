@@ -9,4 +9,5 @@
     <dimen name="double_edge_length">64dp</dimen>
     <dimen name="fragment_node">40dp</dimen>
     <dimen name="center_node">20dp</dimen>
+    <dimen name="middle_ring_pinch">-8dp</dimen>
 </resources>
