@@ -9,32 +9,25 @@ package com.jacksonbcs.bloodwebpathfinder.model
  *
  * Every node, if it exists, in ring 0 is connected to the center point.
  */
-class Node(ring: Int, position: Int) {
-
-    val ring: Int
-    val position: Int
-
-    init {
-        if (paramsAreValid(ring, position)) {
-            this.ring = ring
-            this.position = position
-        }
-        else
-            // TODO: Is this the best thing to do?
-            throw IllegalArgumentException()
+data class Node(
+    val ring: Int,
+    val position: Int,
+    val type: String?,
+    val color: String?,
+) {
+    // TODO: Explore using these as the type of the relevant parameters above
+    enum class Type(val type: String) {
+        ITEM("item"),
+        ADDON("addon"),
+        PERK("perk"),
+        OFFERING("offering")
     }
 
-    private fun paramsAreValid(ring: Int, position: Int): Boolean {
-
-        // Ensure valid ring
-        if (ring !in 0..2)
-            return false
-
-        return when (ring) {
-            0 -> position in 0..5
-            1 -> position in 0..11
-            2 -> position in 0..11
-            else -> false
-        }
+    enum class Color(val color: String) {
+        BROWN("brown"),
+        YELLOW("yellow"),
+        GREEN("green"),
+        PURPLE("purple"),
+        IRIDESCENT("iridescent")
     }
 }

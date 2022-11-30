@@ -1,8 +1,10 @@
 package com.jacksonbcs.bloodwebpathfinder.model
 
-class Web {
+class Web(numNodes: Int) {
 
-    private val maxNodes = 30
+    val vertices = HashMap<Pair<Int, Int>, Vertex>(numNodes)
 
-    val nodes = HashMap<Pair<Int, Int>, Node>(maxNodes)
+    fun getVertex(ring: Int, position: Int): Vertex {
+        TODO("Not yet implemented!")
+    }
 }
