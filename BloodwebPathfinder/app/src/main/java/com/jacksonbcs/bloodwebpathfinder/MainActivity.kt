@@ -1,12 +1,14 @@
 package com.jacksonbcs.bloodwebpathfinder
 
+import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Log
 import android.widget.ImageView
 import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
+import com.jacksonbcs.bloodwebpathfinder.model.Node
+import com.jacksonbcs.bloodwebpathfinder.model.Vertex
 import com.jacksonbcs.bloodwebpathfinder.model.Web
 import kotlin.properties.Delegates
 
@@ -38,6 +40,16 @@ class MainActivity : AppCompatActivity() {
         sWidth = getScreenWidth()
 
         // Initialize the first (innermost) ring
+        // TODO: This is just example junk
+        val v = Vertex(
+            Node(1, 0, null, null),
+            (sWidth * 0.4).toInt()
+        )
+        val node = ImageView(this)
+        node.x = v.xPos.toFloat()
+        node.y = v.yPos.toFloat()
+        node.setImageDrawable(resources.getDrawable(R.drawable.center_node))
+
         // TODO
 
         // Initialize the second (middle) ring
