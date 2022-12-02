@@ -7,20 +7,6 @@
     tools:context=".MainActivity"
     android:background="@color/background">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/center_vertical_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,15 +18,6 @@
         android:src="@drawable/center_node"
         android:contentDescription="@string/center_node_description" />
 
-    <!-- TODO: Template node
-    <ImageView
-        android:id="@+id/node_0_0"
-        android:layout_width="@dimen/fragment_node"
-        android:layout_height="@dimen/fragment_node"
-        android:contentDescription="@string/node_content_description"
-        android:src="@drawable/node_ring" />
-    -->
-
     <!--=== Innermost ring ===-->
 
     <!-- 12 o'clock -->
@@ -50,10 +27,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintLeft_toLeftOf="@id/center_node"
-        app:layout_constraintRight_toRightOf="@id/center_node"
-        app:layout_constraintBottom_toTopOf="@id/center_node"
-        android:layout_marginBottom="@dimen/edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 2 o'clock -->
     <ImageView
@@ -62,10 +39,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintStart_toEndOf="@+id/node_0_0"
-        android:layout_marginLeft="@dimen/half_edge_length"
-        android:layout_marginBottom="@dimen/half_edge_length"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 4 o'clock -->
     <ImageView
@@ -74,10 +51,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintStart_toEndOf="@+id/node_0_3"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        android:layout_marginLeft="@dimen/half_edge_length"
-        android:layout_marginTop="@dimen/half_edge_length"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 6 o'clock -->
     <ImageView
@@ -86,10 +63,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintLeft_toLeftOf="@id/center_node"
-        app:layout_constraintRight_toRightOf="@id/center_node"
-        app:layout_constraintTop_toBottomOf="@id/center_node"
-        android:layout_marginTop="@dimen/edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 8 o'clock -->
     <ImageView
@@ -98,10 +75,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintEnd_toStartOf="@+id/node_0_3"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        android:layout_marginRight="@dimen/half_edge_length"
-        android:layout_marginTop="@dimen/half_edge_length"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 10 o'clock -->
     <ImageView
@@ -110,10 +87,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toStartOf="@+id/node_0_0"
-        android:layout_marginBottom="@dimen/half_edge_length"
-        android:layout_marginRight="@dimen/half_edge_length"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!--=== Middle ring ===-->
 
@@ -124,10 +101,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toTopOf="@+id/node_0_0"
-        app:layout_constraintTop_toBottomOf="@+id/node_2_0"
-        app:layout_constraintLeft_toRightOf="@id/center_vertical_guideline"
-        android:layout_marginLeft="@dimen/half_edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 2 o'clock -->
     <ImageView
@@ -136,9 +113,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toTopOf="@+id/node_1_2"
-        app:layout_constraintEnd_toStartOf="@+id/node_1_2"
-        android:layout_marginBottom="@dimen/quarter_edge_length"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 2:30 -->
     <ImageView
@@ -147,10 +125,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toBottomOf="@+id/node_0_1"
-        app:layout_constraintStart_toEndOf="@+id/node_0_1"
-        android:layout_marginLeft="@dimen/edge_length"
-        android:layout_marginBottom="@dimen/middle_ring_pinch" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 3:30 -->
     <ImageView
@@ -159,10 +137,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintStart_toEndOf="@+id/node_0_2"
-        app:layout_constraintTop_toTopOf="@+id/node_0_2"
-        android:layout_marginLeft="@dimen/edge_length"
-        android:layout_marginTop="@dimen/middle_ring_pinch" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 4 o'clock -->
     <ImageView
@@ -171,9 +149,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintEnd_toStartOf="@+id/node_1_3"
-        app:layout_constraintTop_toBottomOf="@+id/node_1_3"
-        android:layout_marginTop="@dimen/quarter_edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- Bottom right (5:30) -->
     <ImageView
@@ -182,10 +161,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toTopOf="@+id/node_3_6"
-        app:layout_constraintStart_toStartOf="@+id/center_vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/node_0_3"
-        android:layout_marginLeft="@dimen/half_edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- Bottom left (6:30) -->
     <ImageView
@@ -194,10 +173,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toTopOf="@+id/node_3_6"
-        app:layout_constraintEnd_toStartOf="@+id/center_vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/node_0_3"
-        android:layout_marginRight="@dimen/half_edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 8 o'clock -->
     <ImageView
@@ -206,9 +185,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintStart_toEndOf="@+id/node_1_8"
-        app:layout_constraintTop_toBottomOf="@+id/node_1_8"
-        android:layout_marginTop="@dimen/quarter_edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 8:30 -->
     <ImageView
@@ -217,10 +197,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintEnd_toStartOf="@+id/node_0_4"
-        app:layout_constraintTop_toTopOf="@+id/node_0_4"
-        android:layout_marginRight="@dimen/edge_length"
-        android:layout_marginTop="@dimen/middle_ring_pinch" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 9:30 -->
     <ImageView
@@ -229,10 +209,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toBottomOf="@+id/node_0_5"
-        app:layout_constraintEnd_toStartOf="@+id/node_0_5"
-        android:layout_marginRight="@dimen/edge_length"
-        android:layout_marginBottom="@dimen/middle_ring_pinch" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 10 o'clock -->
     <ImageView
@@ -241,9 +221,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toTopOf="@+id/node_1_9"
-        app:layout_constraintStart_toEndOf="@+id/node_1_9"
-        android:layout_marginBottom="@dimen/quarter_edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- Top left (11:30) -->
     <ImageView
@@ -252,10 +233,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toTopOf="@+id/node_0_0"
-        app:layout_constraintTop_toBottomOf="@+id/node_2_0"
-        app:layout_constraintRight_toLeftOf="@id/center_vertical_guideline"
-        android:layout_marginRight="@dimen/half_edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!--=== Outermost ring ===-->
 
@@ -266,10 +247,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintLeft_toLeftOf="@id/center_node"
-        app:layout_constraintRight_toRightOf="@id/center_node"
-        app:layout_constraintBottom_toTopOf="@id/node_0_0"
-        android:layout_marginBottom="@dimen/double_edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 1 o'clock -->
     <ImageView
@@ -278,10 +259,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toTopOf="@+id/node_1_1"
-        app:layout_constraintStart_toEndOf="@+id/node_1_0"
-        android:layout_marginLeft="@dimen/half_edge_length"
-        android:layout_marginBottom="@dimen/half_edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <!-- 2 o'clock -->
     <ImageView
@@ -290,10 +271,10 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toTopOf="@+id/node_1_2"
-        app:layout_constraintStart_toEndOf="@+id/node_1_1"
-        android:layout_marginLeft="@dimen/half_edge_length"
-        android:layout_marginBottom="@dimen/half_edge_length" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 3 o'clock -->
     <ImageView
@@ -302,42 +283,105 @@
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintBottom_toBottomOf="@+id/center_node"
-        app:layout_constraintStart_toEndOf="@+id/node_1_2"
-        app:layout_constraintTop_toTopOf="@+id/center_node"
-        android:layout_marginLeft="@dimen/quarter_edge_length"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <!-- 4 o'clock -->
-    <!-- TODO -->
-
-    <!-- 5 o'clock -->
-    <!-- TODO -->
-
-    <!-- 6 o'clock -->
     <ImageView
-        android:id="@+id/node_3_6"
+        android:id="@+id/node_2_4"
         android:layout_width="@dimen/fragment_node"
         android:layout_height="@dimen/fragment_node"
         android:contentDescription="@string/node_content_description"
         android:src="@drawable/node_ring"
-        app:layout_constraintEnd_toEndOf="@+id/center_node"
-        app:layout_constraintStart_toStartOf="@+id/center_node"
-        app:layout_constraintTop_toBottomOf="@+id/node_0_3"
-        android:layout_marginTop="@dimen/double_edge_length"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- 5 o'clock -->
+    <ImageView
+        android:id="@+id/node_2_5"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- 6 o'clock -->
+    <ImageView
+        android:id="@+id/node_2_6"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <!-- 7 o'clock -->
-    <!-- TODO -->
+    <ImageView
+        android:id="@+id/node_2_7"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 8 o'clock -->
-    <!-- TODO -->
+    <ImageView
+        android:id="@+id/node_2_8"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 9 o'clock -->
-    <!-- TODO -->
+    <ImageView
+        android:id="@+id/node_2_9"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 10 o'clock -->
-    <!-- TODO -->
+    <ImageView
+        android:id="@+id/node_2_10"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 11 o'clock -->
-    <!-- TODO -->
+    <ImageView
+        android:id="@+id/node_2_11"
+        android:layout_width="@dimen/fragment_node"
+        android:layout_height="@dimen/fragment_node"
+        android:contentDescription="@string/node_content_description"
+        android:src="@drawable/node_ring"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
