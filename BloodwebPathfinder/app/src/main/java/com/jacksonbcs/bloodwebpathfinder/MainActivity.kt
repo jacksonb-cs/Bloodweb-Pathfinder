@@ -1,6 +1,5 @@
 package com.jacksonbcs.bloodwebpathfinder
 
-import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +9,6 @@ import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
 import com.jacksonbcs.bloodwebpathfinder.model.Node
 import com.jacksonbcs.bloodwebpathfinder.model.Vertex
 import com.jacksonbcs.bloodwebpathfinder.model.Web
-import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,13 +49,19 @@ class MainActivity : AppCompatActivity() {
         )
         binding.node111.x = v.xPos.toFloat()
         binding.node111.y = v.yPos.toFloat()
+        val v1 = Vertex(
+            Node(2, 3, null, null),
+            (getScreenWidth() * 0.4).toInt()
+        )
+        binding.node23.x = v1.xPos.toFloat()
+        binding.node23.y = v1.yPos.toFloat()
     }
 
     // Set position of every vertex (bloodweb node) according to screen size
     private fun initializeWeb() {
 
         val nodeList = getNodeList()
-        val screenWidth = getScreenWidth()
+        val webRadius = (getScreenWidth() * 0.4).toInt()
 
         for ((i, node) in nodeList.withIndex()) {
 
@@ -65,9 +69,10 @@ class MainActivity : AppCompatActivity() {
             if (i < 7) {    // TODO: Hardcoded values?
                 val vertex = Vertex(
                     Node(0, i, null, null),
-                    screenWidth
+                    webRadius
                 )
                 node.x = vertex.xPos.toFloat()
+                node.y = vertex.yPos.toFloat()
             }
         }
     }
