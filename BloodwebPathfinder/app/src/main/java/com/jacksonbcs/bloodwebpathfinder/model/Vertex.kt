@@ -6,14 +6,11 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.properties.Delegates
 
-class Vertex(val node: Node, webRadius: Int) {
+class Vertex(private val node: Node, webRadius: Int) {
 
     // Position on screen
     var xPos by Delegates.notNull<Double>()
     var yPos by Delegates.notNull<Double>()
-
-    private val circleRadians = 2 * PI
-    private val ringNumNodes = arrayListOf(6, 12, 12)
 
     init {
         setScreenPosition(webRadius)
@@ -33,7 +30,7 @@ class Vertex(val node: Node, webRadius: Int) {
 
         // Adjust the radius according to the ring of the node
         val adjustedRadius = (node.ring + 1) * webRadius.toDouble() / 3
-        
+
         xPos = xRatio * adjustedRadius
         yPos = yRatio * adjustedRadius
     }
@@ -48,6 +45,8 @@ class Vertex(val node: Node, webRadius: Int) {
     }
 
     private companion object {
+        const val circleRadians = 2 * PI
+        val ringNumNodes = arrayListOf(6, 12, 12)
         const val TAG = "VertexClass"
     }
 }
