@@ -4,21 +4,17 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import com.jacksonbcs.bloodwebpathfinder.BloodwebPathfinder
+import com.jacksonbcs.bloodwebpathfinder.BloodwebPathfinderApp
 import com.jacksonbcs.bloodwebpathfinder.R
 import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
-import com.jacksonbcs.bloodwebpathfinder.model.Node
-import com.jacksonbcs.bloodwebpathfinder.model.Vertex
-import com.jacksonbcs.bloodwebpathfinder.model.Web
-import com.jacksonbcs.bloodwebpathfinder.repository.WebViewModelFactory
+import com.jacksonbcs.bloodwebpathfinder.model.repository.WebViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
     private val webViewModel: WebViewModel by viewModels {
-        WebViewModelFactory((application as BloodwebPathfinder).repository)
+        WebViewModelFactory((application as BloodwebPathfinderApp).repository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
