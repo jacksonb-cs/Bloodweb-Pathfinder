@@ -1,12 +1,16 @@
 package com.jacksonbcs.bloodwebpathfinder.model.repository
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import android.util.Log
+import androidx.room.*
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.jacksonbcs.bloodwebpathfinder.model.AdjacencyListConverter
 import com.jacksonbcs.bloodwebpathfinder.model.Node
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Database(entities = [Node::class], version = 1, exportSchema = false)
+@TypeConverters(AdjacencyListConverter::class)
 abstract class NodeRoomDatabase : RoomDatabase() {
 
     abstract fun nodeDao(): NodeRoomDao
@@ -16,7 +20,9 @@ abstract class NodeRoomDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: NodeRoomDatabase? = null
 
-        fun getDatabase(context: Context): NodeRoomDatabase {
+        fun getDatabase(context: Context, scope: CoroutineScope): NodeRoomDatabase {
+
+            Log.d("NodeRoomDatabase", "GETTING DATABASE INSTANCE")
 
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
@@ -25,10 +31,49 @@ abstract class NodeRoomDatabase : RoomDatabase() {
                     "node_database"
                 )
                     // Can add a callback here to do something on DB creation
+                    .addCallback(NodeDatabaseCallback(scope))
                     .build()
 
                 INSTANCE = instance
                 instance
+            }
+        }
+
+        private class NodeDatabaseCallback(
+            private val scope: CoroutineScope
+        ) : RoomDatabase.Callback() {
+
+            override fun onCreate(db: SupportSQLiteDatabase) {
+                super.onCreate(db)
+                INSTANCE?.let { nodeRoomDatabase ->
+                    scope.launch {
+                        populateDatabase(nodeRoomDatabase.nodeDao())
+                    }
+                }
+            }
+
+            private suspend fun populateDatabase(nodeDao: NodeRoomDao) {
+
+                Log.d("PopulateDatabase", "IN FUNCTION TO POPULATE DATABASE!")
+
+                nodeDao.deleteAll()
+
+                // Add sample nodes
+                nodeDao.insert(
+                    Node(0, 0, Node.Type.ADDON, Node.Color.BROWN, mutableListOf())
+                )
+                nodeDao.insert(
+                    Node(0, 1, Node.Type.ADDON, Node.Color.YELLOW, mutableListOf())
+                )
+                nodeDao.insert(
+                    Node(1, 0, Node.Type.OFFERING, Node.Color.PURPLE, mutableListOf())
+                )
+                nodeDao.insert(
+                    Node(1, 2, Node.Type.ITEM, Node.Color.GREEN, mutableListOf())
+                )
+                nodeDao.insert(
+                    Node(2, 2, Node.Type.PERK, Node.Color.YELLOW, mutableListOf())
+                )
             }
         }
     }

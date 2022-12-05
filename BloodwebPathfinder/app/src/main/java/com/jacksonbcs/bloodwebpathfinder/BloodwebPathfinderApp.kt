@@ -11,7 +11,7 @@ class BloodwebPathfinderApp : Application() {
     private val applicationScope = CoroutineScope(SupervisorJob())
 
     // Only create database when needed
-    private val roomDatabase by lazy { NodeRoomDatabase.getDatabase(this) }
+    private val roomDatabase by lazy { NodeRoomDatabase.getDatabase(this, applicationScope) }
     // TODO: private val firestoreDatabase by lazy {  }
     val repository by lazy {
         WebRepository(roomDatabase.nodeDao() /*TODO: Pass FirestoreDao*/)

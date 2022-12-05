@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.jacksonbcs.bloodwebpathfinder.BloodwebPathfinderApp
 import com.jacksonbcs.bloodwebpathfinder.R
 import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
+import com.jacksonbcs.bloodwebpathfinder.model.Node
 import com.jacksonbcs.bloodwebpathfinder.model.repository.WebViewModelFactory
 
 class MainActivity : AppCompatActivity() {
@@ -23,8 +24,20 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding.lifecycleOwner = this
+        webViewModel.webRadius = (getScreenWidth() * 0.4).toInt()
+
         binding.viewmodel = webViewModel
+        binding.lifecycleOwner = this
+
+        webViewModel.web.observe(this) {
+
+        }
+        // TODO: REMOVE
+        webViewModel.binding = binding
+
+//        webViewModel.testLatency(findViewById<>())
+
+//        webViewModel.insert(Node(1, 1, Node.Type.ADDON, Node.Color.YELLOW, mutableListOf()))
 
         // Set position of every vertex (bloodweb node) according to screen size
         // TODO: This will become obsolete!

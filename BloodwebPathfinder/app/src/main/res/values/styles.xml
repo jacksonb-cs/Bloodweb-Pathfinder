@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="web_node">
-        <item name="android:onClick"></item>
+        <item name="android:layout_width">@dimen/fragment_node</item>
+        <item name="android:layout_height">@dimen/fragment_node</item>
+        <item name="contentDescription">@string/node_content_description</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
     </style>
 </resources>

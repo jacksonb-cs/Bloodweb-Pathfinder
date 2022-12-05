@@ -6,11 +6,11 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.properties.Delegates
 
-class Vertex(private val node: Node, webRadius: Int) {
+class Vertex(val node: Node, webRadius: Int) {
 
     // Position on screen
-    var xPos by Delegates.notNull<Double>()
-    var yPos by Delegates.notNull<Double>()
+    var xPos by Delegates.notNull<Float>()
+    var yPos by Delegates.notNull<Float>()
 
     init {
         setScreenPosition(webRadius)
@@ -31,8 +31,8 @@ class Vertex(private val node: Node, webRadius: Int) {
         // Adjust the radius according to the ring of the node
         val adjustedRadius = (node.ring + 1) * webRadius.toDouble() / 3
 
-        xPos = xRatio * adjustedRadius
-        yPos = yRatio * adjustedRadius
+        xPos = (xRatio * adjustedRadius).toFloat()
+        yPos = (yRatio * adjustedRadius).toFloat()
     }
 
     // Return position by which to multiply the arc length between nodes in a ring

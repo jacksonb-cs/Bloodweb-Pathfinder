@@ -2,7 +2,6 @@ package com.jacksonbcs.bloodwebpathfinder.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
 /*
  * A node in the Bloodweb.
@@ -12,17 +11,14 @@ import androidx.room.PrimaryKey
  *   - The count for position progresses clockwise, beginning at noon, at 0.
  *
  * Every node, if it exists, in ring 0 is connected to the center point.
- *
- * TODO: Add adjacency list
  */
 @Entity(tableName = "node_table", primaryKeys = ["ring", "position"])
 data class Node(
     val ring: Int,
     val position: Int,
     @ColumnInfo(name = "type") val type: Type?,
-    @ColumnInfo(name = "color") val color: Color?
-//    val type: String?,
-//    val color: String?,
+    @ColumnInfo(name = "color") val color: Color?,
+    @ColumnInfo(name = "neighbors") val neighbors: MutableList<Pair<Int, Int>>
 ) {
     enum class Type {
         ITEM,

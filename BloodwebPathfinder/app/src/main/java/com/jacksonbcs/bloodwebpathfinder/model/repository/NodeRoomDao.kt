@@ -15,4 +15,7 @@ interface NodeRoomDao {
 
     @Update
     suspend fun update(node: Node)
+
+    @Query("DELETE FROM node_table")
+    suspend fun deleteAll()
 }
