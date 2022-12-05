@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jackson/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/drawable/center_node.xml" value="0.5475" />
+        <entry key="..\:/Users/Jackson/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/drawable/ic_brown_item_active.xml" value="0.5475" />
+        <entry key="..\:/Users/Jackson/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/drawable/ic_green_offering_active.xml" value="0.5475" />
+        <entry key="..\:/Users/Jackson/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/drawable/ic_launcher_background.xml" value="0.5475" />
         <entry key="..\:/Users/Jackson/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Jackson/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/layout/activity_main_OLD.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jackson/Documents/School/Semester_7/Mobile_Programming/Final_Project/BloodwebPathfinder/app/src/main/res/layout/activity_main_old.xml" value="0.31354166666666666" />

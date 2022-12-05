@@ -7,7 +7,7 @@
     <dimen name="edge_length">32dp</dimen>
     <dimen name="edge_1.5_length">48dp</dimen>
     <dimen name="double_edge_length">64dp</dimen>
-    <dimen name="fragment_node">40dp</dimen>
+    <dimen name="fragment_node">34dp</dimen>
     <dimen name="center_node">20dp</dimen>
     <dimen name="middle_ring_pinch">-8dp</dimen>
 </resources>

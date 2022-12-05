@@ -11,10 +11,7 @@ import com.jacksonbcs.bloodwebpathfinder.model.repository.WebRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-// TODO: May need to remove "Observable" implementation
-class WebViewModel(private val repository: WebRepository) : ViewModel(), Observable {
-
-    private val callbacks = PropertyChangeRegistry()
+class WebViewModel(private val repository: WebRepository) : ViewModel() {
 
     private val nodes = repository.allNodes.asLiveData()
     var webRadius: Int? = null
@@ -32,13 +29,6 @@ class WebViewModel(private val repository: WebRepository) : ViewModel(), Observa
             val vertex = Vertex(node, webRadius ?: DEFAULT_RADIUS)
             nodeMap[Pair(node.ring, node.position)] = vertex
         }
-        // TODO: DELETE
-//        Log.d(TAG, "NodeMap size: ${nodeMap.size}")
-//        for ((key, value) in nodeMap) {
-//            Log.d(TAG, "PRESENT: $key")
-//        }
-
-//        notifyPropertyChanged(1)  TODO
         nodeMap
     }
 
@@ -162,51 +152,12 @@ class WebViewModel(private val repository: WebRepository) : ViewModel(), Observa
         web.value?.get(Pair(2, 11)) ?: NULL_VERTEX
     }
 
-    // TODO: DELETE
-    init {
-        testLatency()
-    }
-
-    // TODO: REMOVE
-    var binding: ActivityMainBinding? = null
-    fun testLatency() = viewModelScope.launch {
-        Log.d(TAG, "TEST LATENCY: BEFORE DELAY")
-        delay(5000)
-        Log.d(TAG, "AFTER DELAY: TEST LATENCY")
-        insert(Node(2, 10, Node.Type.OFFERING, Node.Color.IRIDESCENT, mutableListOf()))
-        insert(Node(0, 3, Node.Type.PERK, Node.Color.GREEN, mutableListOf()))
-//        binding?.invalidateAll()
-//        binding?.executePendingBindings()
-    }
-
-    fun getVertex(ring: Int, position: Int): Vertex {
-        // TODO: REMOVE
-        Log.d(TAG, "${web.value?.size}")
-        Log.d(TAG, "Ring: $ring; Position: $position; Web.value: ${web.value?.get(Pair(ring, position))}")
-
-        return web.value?.get(Pair(ring, position)) ?: NULL_VERTEX
+    fun onNodeClick(ring: Int, position: Int) {
+        Log.d(TAG, "Node clicked! Ring: $ring, Position: $position")
     }
 
     fun insert(node: Node) = viewModelScope.launch {
         repository.insert(node)
-    }
-
-    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        callbacks.add(callback)
-    }
-
-    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        callbacks.remove(callback)
-    }
-
-    // TODO: Maybe fix, maybe delete
-    fun notifyPropertyChanged(fieldId: Int) {
-        callbacks.notifyCallbacks(this, fieldId, null)
-    }
-
-    // TODO: DELETE
-    fun notifyChange() {
-        callbacks.notifyCallbacks(this, 0, null)
     }
 
     companion object {

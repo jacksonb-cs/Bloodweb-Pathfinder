@@ -1,35 +1,86 @@
 package com.jacksonbcs.bloodwebpathfinder.util
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import com.jacksonbcs.bloodwebpathfinder.R
 import com.jacksonbcs.bloodwebpathfinder.model.Node
 import com.jacksonbcs.bloodwebpathfinder.model.Vertex
 
-// TODO: Remove
-@BindingAdapter(value = ["app:nodeRing", "app:nodePosition"], requireAll = true)
-fun getPositionX(nodeView: View, ring: Int, position: Int) {
-//
-//            val vertex = web.value?.get(Pair(ring, position))
-//    val vertex: Vertex? = null
-//
-//    if (vertex != null) {
-//        nodeView.x = vertex.xPos.toFloat()
-//    }
-//    else {
-//        nodeView.visibility = View.GONE
-//    }
+@BindingAdapter("app:associatedVertex")
+fun setVertex(view: ImageView, vertex: Vertex?) {
+
+    // Set vertex position
+    view.translationX = 0F
+    view.translationY = 0F
+    view.x += (vertex?.xPos ?: 0.0.toFloat())
+    view.y += (vertex?.yPos ?: 0.0.toFloat())
+
+    // Set display properties
+    val vertexIcon = getNodeIcon(vertex?.node)
+    if (vertexIcon != null) {
+        view.setImageDrawable(ContextCompat.getDrawable(view.context, vertexIcon))
+        view.visibility = View.VISIBLE
+    }
+    else {
+        view.visibility = View.GONE
+    }
 }
 
-@BindingAdapter("app:associatedVertex")
-fun setVertex(nodeView: View, vertex: Vertex?) {
-    // TODO: Remove!
-    val tag = "BindingAdapter"
-    Log.d(tag, "====================")
-    Log.d(tag, "Ring: ${vertex?.node?.ring}, Position: ${vertex?.node?.position}")
-    Log.d(tag, "X: ${vertex?.xPos}, Y: ${vertex?.yPos}")
+// Returns null if the node, its color, or its type are null
+fun getNodeIcon(node: Node?): Int? {
+    // First determine item type
+    return when (node?.type) {
+        Node.Type.ADDON -> getAddonIcon(node.color)
+        Node.Type.ITEM -> getItemIcon(node.color)
+        Node.Type.PERK -> getPerkIcon(node.color)
+        Node.Type.OFFERING -> getOfferingIcon(node.color)
+        else -> null
+    }
+}
 
-    nodeView.x += vertex?.xPos ?: 0.0.toFloat()
-    nodeView.y += vertex?.yPos ?: 0.0.toFloat()
+fun getAddonIcon(color: Node.Color?): Int? {
+    // Addons can be any color except iridescent
+    return when (color) {
+        Node.Color.BROWN -> R.drawable.brown_addon_active
+        Node.Color.YELLOW -> R.drawable.yellow_addon_active
+        Node.Color.GREEN -> R.drawable.green_addon_active
+        Node.Color.PURPLE -> R.drawable.purple_addon_active
+        else -> null
+    }
+}
+
+fun getItemIcon(color: Node.Color?): Int? {
+    // Items can be any color
+    return when (color) {
+        Node.Color.BROWN -> R.drawable.brown_item_active
+        Node.Color.YELLOW -> R.drawable.yellow_item_active
+        Node.Color.GREEN -> R.drawable.green_item_active
+        Node.Color.PURPLE -> R.drawable.purple_item_active
+        Node.Color.IRIDESCENT -> R.drawable.iridescent_item_active
+        else -> null
+    }
+}
+
+fun getPerkIcon(color: Node.Color?): Int? {
+    // Perks can only be YELLOW, GREEN, or PURPLE
+    return when (color) {
+        Node.Color.YELLOW -> R.drawable.yellow_perk_active
+        Node.Color.GREEN -> R.drawable.green_perk_active
+        Node.Color.PURPLE -> R.drawable.purple_perk_active
+        else -> null
+    }
+}
+
+fun getOfferingIcon(color: Node.Color?): Int? {
+    // Offerings can be any color
+    return when (color) {
+        Node.Color.BROWN -> R.drawable.brown_offering_active
+        Node.Color.YELLOW -> R.drawable.yellow_offering_active
+        Node.Color.GREEN -> R.drawable.green_offering_active
+        Node.Color.PURPLE -> R.drawable.purple_offering_active
+        Node.Color.IRIDESCENT -> R.drawable.iridescent_offering_active
+        else -> null
+    }
 }

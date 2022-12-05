@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
+import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.jacksonbcs.bloodwebpathfinder.BloodwebPathfinderApp
 import com.jacksonbcs.bloodwebpathfinder.R
 import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
-import com.jacksonbcs.bloodwebpathfinder.model.Node
 import com.jacksonbcs.bloodwebpathfinder.model.repository.WebViewModelFactory
 
 class MainActivity : AppCompatActivity() {
@@ -26,46 +26,9 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         webViewModel.webRadius = (getScreenWidth() * 0.4).toInt()
-
         binding.viewmodel = webViewModel
         binding.lifecycleOwner = this
-
-        webViewModel.vertex_0_0.observe(this) {
-
-        }
-        // TODO: REMOVE
-        webViewModel.binding = binding
-        Log.d(TAG, "Screen width: ${getScreenWidth()}")
-
-//        webViewModel.testLatency(findViewById<>())
-
-//        webViewModel.insert(Node(1, 1, Node.Type.ADDON, Node.Color.YELLOW, mutableListOf()))
-
-        // Set position of every vertex (bloodweb node) according to screen size
-        // TODO: This will become obsolete!
-//        initializeWeb()
     }
-
-    // TODO: Fix up because of sweeping changes in application structure (or maybe this dies?)
-    // Set position of every vertex (bloodweb node) according to screen size
-//    private fun initializeWeb() {
-//
-//        val nodeList = getNodeList()
-//        val webRadius = (getScreenWidth() * 0.4).toInt()
-//
-//        for ((i, node) in nodeList.withIndex()) {
-//
-//            // Deal with first ring (only has 6 nodes)
-//            if (i < 7) {    // TODO: Hardcoded values?
-//                val vertex = Vertex(
-//                    Node(0, i, null, null),
-//                    webRadius
-//                )
-//                node.x = vertex.xPos.toFloat()
-//                node.y = vertex.yPos.toFloat()
-//            }
-//        }
-//    }
 
     private fun getScreenWidth(): Int {
 
