@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.jacksonbcs.bloodwebpathfinder.BloodwebPathfinderApp
@@ -29,11 +30,12 @@ class MainActivity : AppCompatActivity() {
         binding.viewmodel = webViewModel
         binding.lifecycleOwner = this
 
-        webViewModel.web.observe(this) {
+        webViewModel.vertex_0_0.observe(this) {
 
         }
         // TODO: REMOVE
         webViewModel.binding = binding
+        Log.d(TAG, "Screen width: ${getScreenWidth()}")
 
 //        webViewModel.testLatency(findViewById<>())
 

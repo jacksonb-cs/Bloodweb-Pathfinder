@@ -23,13 +23,13 @@ fun getPositionX(nodeView: View, ring: Int, position: Int) {
 }
 
 @BindingAdapter("app:associatedVertex")
-fun setVertex(nodeView: View, vertex: Vertex) {
+fun setVertex(nodeView: View, vertex: Vertex?) {
     // TODO: Remove!
     val tag = "BindingAdapter"
     Log.d(tag, "====================")
-    Log.d(tag, "Ring: ${vertex.node.ring}, Position: ${vertex.node.position}")
-    Log.d(tag, "X: ${vertex.xPos}, Y: ${vertex.yPos}")
+    Log.d(tag, "Ring: ${vertex?.node?.ring}, Position: ${vertex?.node?.position}")
+    Log.d(tag, "X: ${vertex?.xPos}, Y: ${vertex?.yPos}")
 
-    nodeView.x = vertex.xPos
-    nodeView.y = vertex.yPos
+    nodeView.x += vertex?.xPos ?: 0.0.toFloat()
+    nodeView.y += vertex?.yPos ?: 0.0.toFloat()
 }

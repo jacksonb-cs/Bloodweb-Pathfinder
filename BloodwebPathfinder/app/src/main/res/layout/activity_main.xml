@@ -31,9 +31,7 @@
         <!-- 12 o'clock -->
         <ImageView
             android:id="@+id/node_0_0"
-            app:nodeRing="@{0}"
-            app:nodePosition="@{0}"
-            app:associatedVertex="@{viewmodel.getVertex(0, 0)}"
+            app:associatedVertex="@{viewmodel.vertex_0_0}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -42,19 +40,16 @@
         <!-- 2 o'clock -->
         <ImageView
             android:id="@+id/node_0_1"
-            app:nodeRing="@{0}"
-            app:nodePosition="@{1}"
-            app:associatedVertex="@{viewmodel.getVertex(0, 1)}"
+            app:associatedVertex="@{viewmodel.vertex_0_1}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <!-- 4 o'clock -->
         <ImageView
             android:id="@+id/node_0_2"
-            app:nodeRing="@{0}"
-            app:nodePosition="@{2}"
+            app:associatedVertex="@{viewmodel.vertex_0_2}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -63,8 +58,7 @@
         <!-- 6 o'clock -->
         <ImageView
             android:id="@+id/node_0_3"
-            app:nodeRing="@{0}"
-            app:nodePosition="@{3}"
+            app:associatedVertex="@{viewmodel.vertex_0_3}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -73,9 +67,7 @@
         <!-- 8 o'clock -->
         <ImageView
             android:id="@+id/node_0_4"
-
-            app:nodeRing="@{0}"
-            app:nodePosition="@{4}"
+            app:associatedVertex="@{viewmodel.vertex_0_4}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -84,9 +76,7 @@
         <!-- 10 o'clock -->
         <ImageView
             android:id="@+id/node_0_5"
-
-            app:nodeRing="@{0}"
-            app:nodePosition="@{5}"
+            app:associatedVertex="@{viewmodel.vertex_0_5}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -97,9 +87,7 @@
         <!-- Top right (12:30) -->
         <ImageView
             android:id="@+id/node_1_0"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{0}"
-            app:associatedVertex="@{viewmodel.getVertex(1, 0)}"
+            app:associatedVertex="@{viewmodel.vertex_1_0}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -108,8 +96,7 @@
         <!-- 2 o'clock -->
         <ImageView
             android:id="@+id/node_1_1"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{1}"
+            app:associatedVertex="@{viewmodel.vertex_1_1}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -118,8 +105,7 @@
         <!-- 2:30 -->
         <ImageView
             android:id="@+id/node_1_2"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{2}"
+            app:associatedVertex="@{viewmodel.vertex_1_2}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -128,8 +114,7 @@
         <!-- 3:30 -->
         <ImageView
             android:id="@+id/node_1_3"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{3}"
+            app:associatedVertex="@{viewmodel.vertex_1_3}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -138,8 +123,7 @@
         <!-- 4 o'clock -->
         <ImageView
             android:id="@+id/node_1_4"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{4}"
+            app:associatedVertex="@{viewmodel.vertex_1_4}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -148,8 +132,7 @@
         <!-- Bottom right (5:30) -->
         <ImageView
             android:id="@+id/node_1_5"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{5}"
+            app:associatedVertex="@{viewmodel.vertex_1_5}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -158,8 +141,7 @@
         <!-- Bottom left (6:30) -->
         <ImageView
             android:id="@+id/node_1_6"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{6}"
+            app:associatedVertex="@{viewmodel.vertex_1_6}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -168,8 +150,7 @@
         <!-- 8 o'clock -->
         <ImageView
             android:id="@+id/node_1_7"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{7}"
+            app:associatedVertex="@{viewmodel.vertex_1_7}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -178,8 +159,7 @@
         <!-- 8:30 -->
         <ImageView
             android:id="@+id/node_1_8"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{8}"
+            app:associatedVertex="@{viewmodel.vertex_1_8}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -188,8 +168,7 @@
         <!-- 9:30 -->
         <ImageView
             android:id="@+id/node_1_9"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{9}"
+            app:associatedVertex="@{viewmodel.vertex_1_9}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -198,8 +177,7 @@
         <!-- 10 o'clock -->
         <ImageView
             android:id="@+id/node_1_10"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{10}"
+            app:associatedVertex="@{viewmodel.vertex_1_10}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -208,8 +186,7 @@
         <!-- Top left (11:30) -->
         <ImageView
             android:id="@+id/node_1_11"
-            app:nodeRing="@{1}"
-            app:nodePosition="@{11}"
+            app:associatedVertex="@{viewmodel.vertex_1_11}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -220,8 +197,7 @@
         <!-- 12 o'clock -->
         <ImageView
             android:id="@+id/node_2_0"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{0}"
+            app:associatedVertex="@{viewmodel.vertex_2_0}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -230,8 +206,7 @@
         <!-- 1 o'clock -->
         <ImageView
             android:id="@+id/node_2_1"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{1}"
+            app:associatedVertex="@{viewmodel.vertex_2_1}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -240,8 +215,7 @@
         <!-- 2 o'clock -->
         <ImageView
             android:id="@+id/node_2_2"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{2}"
+            app:associatedVertex="@{viewmodel.vertex_2_2}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -250,8 +224,7 @@
         <!-- 3 o'clock -->
         <ImageView
             android:id="@+id/node_2_3"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{3}"
+            app:associatedVertex="@{viewmodel.vertex_2_3}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -260,8 +233,7 @@
         <!-- 4 o'clock -->
         <ImageView
             android:id="@+id/node_2_4"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{4}"
+            app:associatedVertex="@{viewmodel.vertex_2_4}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -270,8 +242,7 @@
         <!-- 5 o'clock -->
         <ImageView
             android:id="@+id/node_2_5"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{5}"
+            app:associatedVertex="@{viewmodel.vertex_2_5}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -280,8 +251,7 @@
         <!-- 6 o'clock -->
         <ImageView
             android:id="@+id/node_2_6"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{6}"
+            app:associatedVertex="@{viewmodel.vertex_2_6}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -290,8 +260,7 @@
         <!-- 7 o'clock -->
         <ImageView
             android:id="@+id/node_2_7"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{7}"
+            app:associatedVertex="@{viewmodel.vertex_2_7}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -300,8 +269,7 @@
         <!-- 8 o'clock -->
         <ImageView
             android:id="@+id/node_2_8"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{8}"
+            app:associatedVertex="@{viewmodel.vertex_2_8}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -310,8 +278,7 @@
         <!-- 9 o'clock -->
         <ImageView
             android:id="@+id/node_2_9"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{9}"
+            app:associatedVertex="@{viewmodel.vertex_2_9}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -320,8 +287,7 @@
         <!-- 10 o'clock -->
         <ImageView
             android:id="@+id/node_2_10"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{10}"
+            app:associatedVertex="@{viewmodel.vertex_2_10}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -330,8 +296,7 @@
         <!-- 11 o'clock -->
         <ImageView
             android:id="@+id/node_2_11"
-            app:nodeRing="@{2}"
-            app:nodePosition="@{11}"
+            app:associatedVertex="@{viewmodel.vertex_2_11}"
             style="@style/web_node"
             android:src="@drawable/node_ring"
             app:layout_constraintLeft_toLeftOf="parent"
