@@ -10,7 +10,7 @@ import java.lang.IllegalArgumentException
 
 class WebRepository(
     private val nodeRoomDao: NodeRoomDao,
-    /* TODO: private val nodeFirestoreDao: NodeFirestoreDao */
+    private val nodeFirestoreDao: NodeFirestoreDao
 ) {
     val allNodes: Flow<List<Node>> = nodeRoomDao.getAllNodes()
 
@@ -25,14 +25,4 @@ class WebRepository(
     }
 
     // TODO: Firestore calls
-}
-
-class WebViewModelFactory(private val repository: WebRepository) : ViewModelProvider.Factory {
-    override fun <T: ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(WebViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return WebViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class!")
-    }
 }

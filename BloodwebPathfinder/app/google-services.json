@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "507296520520",
+    "project_id": "bloodweb-identifier",
+    "storage_bucket": "bloodweb-identifier.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507296520520:android:961087592405c7dfaf7b7d",
+        "android_client_info": {
+          "package_name": "com.jacksonbcs.bloodwebpathfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "507296520520-84m0ba01mohlaiof34e1p1o01det2c2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jacksonbcs.bloodwebpathfinder",
+            "certificate_hash": "a715863909c099ae4a51582451863ba73ab2670f"
+          }
+        },
+        {
+          "client_id": "507296520520-cmrc899ng051tu5a5fl0udgepbkgvvms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ5G3HGB5-hug6lcmSg084S1MpNiH7-G8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "507296520520-cmrc899ng051tu5a5fl0udgepbkgvvms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

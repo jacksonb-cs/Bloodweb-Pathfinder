@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import com.jacksonbcs.bloodwebpathfinder.BloodwebPathfinderApp
 import com.jacksonbcs.bloodwebpathfinder.R
 import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
-import com.jacksonbcs.bloodwebpathfinder.model.repository.WebViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,44 +44,6 @@ class MainActivity : AppCompatActivity() {
 
         return metrics.widthPixels
     }
-
-    // TODO: There must be a better way of doing this...
-    // Putting it at the bottom because it is shameful
-    /*
-    private fun getNodeList(): List<ImageView> {
-        return listOf(
-            binding.node00,
-            binding.node01,
-            binding.node02,
-            binding.node03,
-            binding.node04,
-            binding.node05,
-            binding.node10,
-            binding.node11,
-            binding.node12,
-            binding.node13,
-            binding.node14,
-            binding.node15,
-            binding.node16,
-            binding.node17,
-            binding.node18,
-            binding.node19,
-            binding.node110,
-            binding.node111,
-            binding.node20,
-            binding.node21,
-            binding.node22,
-            binding.node23,
-            binding.node24,
-            binding.node25,
-            binding.node26,
-            binding.node27,
-            binding.node28,
-            binding.node29,
-            binding.node210,
-            binding.node211
-        )
-    } */
 
     companion object {
         const val WEB_CAPACITY = 30
