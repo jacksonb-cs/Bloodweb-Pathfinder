@@ -16,8 +16,8 @@ import androidx.room.Entity
 data class Node(
     val ring: Int,
     val position: Int,
-    @ColumnInfo(name = "type") val type: Type?,
-    @ColumnInfo(name = "color") val color: Color?,
+    @ColumnInfo(name = "type") var type: Type?,
+    @ColumnInfo(name = "color") var color: Color?,
     @ColumnInfo(name = "neighbors") val neighbors: MutableList<Pair<Int, Int>>
 ) {
     enum class Type {
@@ -49,4 +49,55 @@ data class Node(
 //        PURPLE("purple"),
 //        IRIDESCENT("iridescent")
 //    }
+fun cycleColor() {
+    // Node type determines allowable colors, which changes the cycle behavior
+    color = when (type) {
+        Type.ADDON -> incrementAddonRarity()
+        Type.ITEM -> incrementItemRarity()
+        Type.PERK -> incrementPerkRarity()
+        Type.OFFERING -> incrementOfferingRarity()
+        else -> null
+    }
+}
+
+    private fun incrementAddonRarity(): Color? {
+        return when (color) {
+            Color.BROWN -> Color.YELLOW
+            Color.YELLOW -> Color.GREEN
+            Color.GREEN -> Color.PURPLE
+            Color.PURPLE -> Color.BROWN
+            else -> null
+        }
+    }
+
+    private fun incrementItemRarity(): Color? {
+        return when (color) {
+            Color.BROWN -> Color.YELLOW
+            Color.YELLOW -> Color.GREEN
+            Color.GREEN -> Color.PURPLE
+            Color.PURPLE -> Color.IRIDESCENT
+            Color.IRIDESCENT -> Color.BROWN
+            else -> null
+        }
+    }
+
+    private fun incrementPerkRarity(): Color? {
+        return when (color) {
+            Color.YELLOW -> Color.GREEN
+            Color.GREEN -> Color.PURPLE
+            Color.PURPLE -> Color.YELLOW
+            else -> null
+        }
+    }
+
+    private fun incrementOfferingRarity(): Color? {
+        return when (color) {
+            Color.BROWN -> Color.YELLOW
+            Color.YELLOW -> Color.GREEN
+            Color.GREEN -> Color.PURPLE
+            Color.PURPLE -> Color.IRIDESCENT
+            Color.IRIDESCENT -> Color.BROWN
+            else -> null
+        }
+    }
 }

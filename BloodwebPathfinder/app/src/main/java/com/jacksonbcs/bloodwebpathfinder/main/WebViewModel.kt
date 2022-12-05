@@ -14,13 +14,6 @@ import kotlinx.coroutines.launch
 class WebViewModel(private val repository: WebRepository) : ViewModel() {
 
     private val nodes = repository.allNodes.asLiveData()
-    var webRadius: Int? = null
-        set(value) {
-            if (value != null) {
-                field = if (value > 0) value
-                else null
-            }
-        }
 
     val web: LiveData<HashMap<Pair<Int, Int>, Vertex>> = Transformations.map(nodes) { nodeList ->
         val nodeMap = HashMap<Pair<Int, Int>, Vertex>()
@@ -31,6 +24,14 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
         }
         nodeMap
     }
+
+    var webRadius: Int? = null
+        set(value) {
+            if (value != null) {
+                field = if (value > 0) value
+                else null
+            }
+        }
 
     var vertex_0_0: LiveData<Vertex> = Transformations.map(web) {
         web.value?.get(Pair(0, 0)) ?: NULL_VERTEX
@@ -153,11 +154,20 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
     }
 
     fun onNodeClick(ring: Int, position: Int) {
-        Log.d(TAG, "Node clicked! Ring: $ring, Position: $position")
+
+        val node = web.value?.get(Pair(ring, position))?.node
+        node?.let {
+            node.cycleColor()
+            update(node)
+        }
     }
 
     fun insert(node: Node) = viewModelScope.launch {
         repository.insert(node)
+    }
+
+    fun update(node: Node) = viewModelScope.launch {
+        repository.update(node)
     }
 
     companion object {
