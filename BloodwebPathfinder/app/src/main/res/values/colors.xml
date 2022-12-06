@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="blood_red">#b32319</color>
+    <color name="dark_red">#801109</color>
     <color name="background">#4b4e54</color>
 </resources>
