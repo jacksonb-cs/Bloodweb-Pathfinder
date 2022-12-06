@@ -6,8 +6,8 @@ import org.junit.Test
 internal class VertexTest {
 
     private val radius = 1080
-    private val color = Node.Color.BROWN.color
-    private val type = Node.Type.ADDON.type
+    private val color = Node.Color.BROWN.cost
+    private val type = Node.Type.ADDON.value
 
     @Test
     fun testCorrectPosition() {

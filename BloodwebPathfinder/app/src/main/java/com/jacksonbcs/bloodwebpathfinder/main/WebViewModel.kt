@@ -1,14 +1,9 @@
 package com.jacksonbcs.bloodwebpathfinder.main
 
-import android.util.Log
-import androidx.databinding.Observable
-import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.*
-import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
 import com.jacksonbcs.bloodwebpathfinder.model.Node
 import com.jacksonbcs.bloodwebpathfinder.model.Vertex
 import com.jacksonbcs.bloodwebpathfinder.model.repository.WebRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class WebViewModel(private val repository: WebRepository) : ViewModel() {
@@ -159,6 +154,13 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
         node?.let {
             node.cycleColor()
             update(node)
+        }
+    }
+
+    // TODO: DELETE THIS
+    fun testWebLoad() {
+        viewModelScope.launch {
+            repository.identifyAndLoadWeb("test_web")
         }
     }
 

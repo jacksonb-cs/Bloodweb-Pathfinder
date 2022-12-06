@@ -20,45 +20,17 @@ data class Node(
     @ColumnInfo(name = "color") var color: Color?,
     @ColumnInfo(name = "neighbors") val neighbors: MutableList<Pair<Int, Int>>
 ) {
-    enum class Type {
-        ITEM,
-        ADDON,
-        PERK,
-        OFFERING
-    }
 
-    enum class Color {
-        BROWN,
-        YELLOW,
-        GREEN,
-        PURPLE,
-        IRIDESCENT
+    fun cycleColor() {
+        // Node type determines allowable colors, which changes the cycle behavior
+        color = when (type) {
+            Type.ADDON -> incrementAddonRarity()
+            Type.ITEM -> incrementItemRarity()
+            Type.PERK -> incrementPerkRarity()
+            Type.OFFERING -> incrementOfferingRarity()
+            else -> null
+        }
     }
-    // TODO: Explore using these as the type of the relevant parameters above
-//    enum class Type(val type: String) {
-//        ITEM("item"),
-//        ADDON("addon"),
-//        PERK("perk"),
-//        OFFERING("offering")
-//    }
-
-//    enum class Color(val color: String) {
-//        BROWN("brown"),
-//        YELLOW("yellow"),
-//        GREEN("green"),
-//        PURPLE("purple"),
-//        IRIDESCENT("iridescent")
-//    }
-fun cycleColor() {
-    // Node type determines allowable colors, which changes the cycle behavior
-    color = when (type) {
-        Type.ADDON -> incrementAddonRarity()
-        Type.ITEM -> incrementItemRarity()
-        Type.PERK -> incrementPerkRarity()
-        Type.OFFERING -> incrementOfferingRarity()
-        else -> null
-    }
-}
 
     private fun incrementAddonRarity(): Color? {
         return when (color) {
@@ -98,6 +70,36 @@ fun cycleColor() {
             Color.PURPLE -> Color.IRIDESCENT
             Color.IRIDESCENT -> Color.BROWN
             else -> null
+        }
+    }
+
+    enum class Type(val value: Int) {
+        ITEM(0),
+        ADDON(1),
+        PERK(2),
+        OFFERING(3);
+
+        companion object {
+            // Necessary to deserialize from Firebase
+            fun fromInt(value: Int): Type {
+                return Type.values().first { it.value == value }
+            }
+        }
+    }
+
+    enum class Color(val cost: Int) {
+        // Costs are derived from the game
+        BROWN(2000),
+        YELLOW(2500),
+        GREEN(3250),
+        PURPLE(4000),
+        IRIDESCENT(5000);
+
+        companion object {
+            // Necessary to deserialize from Firebase
+            fun fromInt(value: Int): Color {
+                return Color.values().first { it.cost == value }
+            }
         }
     }
 }
