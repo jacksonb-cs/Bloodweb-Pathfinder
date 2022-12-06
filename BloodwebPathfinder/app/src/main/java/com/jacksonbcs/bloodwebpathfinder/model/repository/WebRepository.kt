@@ -4,6 +4,9 @@ import android.util.Log
 import androidx.annotation.WorkerThread
 import com.jacksonbcs.bloodwebpathfinder.model.Node
 import kotlinx.coroutines.flow.Flow
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 class WebRepository(
     private val nodeRoomDao: NodeRoomDao,
@@ -45,8 +48,17 @@ class WebRepository(
             (map["position"] as Long).toInt(),
             Node.Type.fromInt((map["type"] as Long).toInt()),
             Node.Color.fromInt((map["color"] as Long).toInt()),
-            mutableListOf() // TODO: Actually handle edges!
+            decodeNeighbors(map["neighbors"] as String)
         )
+    }
+
+    private fun decodeNeighbors(neighborData: String): MutableList<Int> {
+        return try {
+            Json.decodeFromString(neighborData)
+        }
+        catch (e: SerializationException) {
+            mutableListOf()
+        }
     }
 
     private companion object {

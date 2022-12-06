@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="activated_edge">#9c9673</color>
     <color name="blood_red">#b32319</color>
     <color name="dark_red">#801109</color>
     <color name="background">#4b4e54</color>

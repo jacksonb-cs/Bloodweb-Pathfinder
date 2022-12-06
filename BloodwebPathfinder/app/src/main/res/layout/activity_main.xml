@@ -15,10 +15,22 @@
         tools:context=".main.MainActivity"
         android:background="@color/background">
 
+        <!-- Edges Canvas -->
+        <com.jacksonbcs.bloodwebpathfinder.main.utils.EdgesView
+            android:id="@+id/edges_view"
+            app:webEdges="@{viewmodel.edges}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Center Node -->
         <ImageView
+            android:id="@+id/center_node"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/center_node"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"

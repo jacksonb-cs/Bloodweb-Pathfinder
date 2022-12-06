@@ -1,10 +1,15 @@
 package com.jacksonbcs.bloodwebpathfinder.util
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.view.View
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.jacksonbcs.bloodwebpathfinder.R
+import com.jacksonbcs.bloodwebpathfinder.main.utils.EdgesView
 import com.jacksonbcs.bloodwebpathfinder.model.Node
 import com.jacksonbcs.bloodwebpathfinder.model.Vertex
 
@@ -26,6 +31,15 @@ fun setVertex(view: ImageView, vertex: Vertex?) {
     else {
         view.visibility = View.GONE
     }
+}
+
+@BindingAdapter(value = ["app:webEdges"])
+fun drawEdges(view: EdgesView, edges: List<Pair<Vertex, Int>>?) {
+
+    // TODO
+    //  Going to have to convert all of those individual vertices in viewmodel
+    //  to something that makes a bit more sense!
+    //  That'll change `setVertex` from above, as well.
 }
 
 // Returns null if the node, its color, or its type are null

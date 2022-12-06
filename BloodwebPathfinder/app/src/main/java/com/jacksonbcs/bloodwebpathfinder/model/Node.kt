@@ -18,7 +18,7 @@ data class Node(
     val position: Int,
     @ColumnInfo(name = "type") var type: Type?,
     @ColumnInfo(name = "color") var color: Color?,
-    @ColumnInfo(name = "neighbors") val neighbors: MutableList<Pair<Int, Int>>
+    @ColumnInfo(name = "neighbors") val neighbors: MutableList<Int>
 ) {
 
     fun cycleColor() {
@@ -82,7 +82,7 @@ data class Node(
         companion object {
             // Necessary to deserialize from Firebase
             fun fromInt(value: Int): Type {
-                return Type.values().first { it.value == value }
+                return values().first { it.value == value }
             }
         }
     }
@@ -98,7 +98,7 @@ data class Node(
         companion object {
             // Necessary to deserialize from Firebase
             fun fromInt(value: Int): Color {
-                return Color.values().first { it.cost == value }
+                return values().first { it.cost == value }
             }
         }
     }

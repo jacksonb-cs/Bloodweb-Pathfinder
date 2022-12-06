@@ -4,13 +4,12 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Log
-import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.jacksonbcs.bloodwebpathfinder.BloodwebPathfinderApp
 import com.jacksonbcs.bloodwebpathfinder.R
 import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
+import com.jacksonbcs.bloodwebpathfinder.main.utils.WebViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,8 +45,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val WEB_CAPACITY = 30
-
         const val TAG = "MainActivity"
     }
 }

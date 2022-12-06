@@ -1,7 +1,6 @@
 package com.jacksonbcs.bloodwebpathfinder.model.repository
 
 import android.content.Context
-import android.util.Log
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.jacksonbcs.bloodwebpathfinder.model.AdjacencyListConverter
@@ -21,8 +20,6 @@ abstract class NodeRoomDatabase : RoomDatabase() {
         private var INSTANCE: NodeRoomDatabase? = null
 
         fun getDatabase(context: Context, scope: CoroutineScope): NodeRoomDatabase {
-
-            Log.d("NodeRoomDatabase", "GETTING DATABASE INSTANCE")
 
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
@@ -54,16 +51,14 @@ abstract class NodeRoomDatabase : RoomDatabase() {
 
             private suspend fun populateDatabase(nodeDao: NodeRoomDao) {
 
-                Log.d("PopulateDatabase", "IN FUNCTION TO POPULATE DATABASE!")
-
                 nodeDao.deleteAll()
 
                 // Add sample nodes
                 nodeDao.insert(
-                    Node(0, 0, Node.Type.ADDON, Node.Color.BROWN, mutableListOf())
+                    Node(0, 0, Node.Type.ADDON, Node.Color.BROWN, mutableListOf(2, 4))
                 )
                 nodeDao.insert(
-                    Node(0, 1, Node.Type.ADDON, Node.Color.YELLOW, mutableListOf())
+                    Node(0, 1, Node.Type.ADDON, Node.Color.YELLOW, mutableListOf(2))
                 )
                 nodeDao.insert(
                     Node(1, 0, Node.Type.OFFERING, Node.Color.PURPLE, mutableListOf())

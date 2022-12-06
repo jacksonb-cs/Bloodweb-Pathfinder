@@ -1,7 +1,8 @@
-package com.jacksonbcs.bloodwebpathfinder.main
+package com.jacksonbcs.bloodwebpathfinder.main.utils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.jacksonbcs.bloodwebpathfinder.main.WebViewModel
 import com.jacksonbcs.bloodwebpathfinder.model.repository.WebRepository
 import java.lang.IllegalArgumentException
 
