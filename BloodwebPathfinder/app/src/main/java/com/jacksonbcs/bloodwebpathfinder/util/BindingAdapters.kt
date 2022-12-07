@@ -1,5 +1,6 @@
 package com.jacksonbcs.bloodwebpathfinder.util
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
@@ -9,6 +10,7 @@ import com.jacksonbcs.bloodwebpathfinder.main.utils.EdgesView
 import com.jacksonbcs.bloodwebpathfinder.model.EdgePath
 import com.jacksonbcs.bloodwebpathfinder.model.Node
 import com.jacksonbcs.bloodwebpathfinder.model.Vertex
+import java.lang.Math.floorMod
 
 // TODO: DELETE
 @BindingAdapter("app:associatedVertex")
@@ -135,12 +137,12 @@ private fun getInnerRingNodeNeighborCoords(position: Int, neighborSequence: Int)
 
     return if (neighborSequence == 4) {
         // Destination node is the clockwise neighbor in the same ring
-        Pair(0, (position + 1) % 6)
+        Pair(0, floorMod(position + 1, 6))
     }
     else {
         // Destination node is in the middle ring
         val q = position * 2
-        Pair(1, (q + neighborSequence - 2) % 12)
+        Pair(1, floorMod(q + neighborSequence - 2, 12))
     }
 }
 
@@ -149,10 +151,10 @@ private fun getMidRingNodeNeighborCoords(position: Int, neighborSequence: Int): 
 
     return if (neighborSequence == 2) {
         // Destination node is the clockwise neighbor in the same ring
-        Pair(1, (position + 1) % 12)
+        Pair(1, floorMod(position + 1, 12))
     }
     else {
-        Pair(2, (position + neighborSequence) % 12)
+        Pair(2, floorMod(position + neighborSequence, 12))
     }
 }
 
@@ -161,7 +163,7 @@ private fun getOuterRingNodeNeighborCoords(position: Int, neighborSequence: Int)
 
     return if (neighborSequence == 0) {
         // Destination node is the clockwise neighbor in the same ring
-        Pair(2, (position + 1) % 12)
+        Pair(2, floorMod(position + 1, 12))
     }
     else {
         // This is just its own coords...

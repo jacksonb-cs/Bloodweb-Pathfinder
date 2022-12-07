@@ -64,8 +64,12 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
     // TODO: DELETE THIS
     fun testWebLoad() {
         viewModelScope.launch {
-            repository.identifyAndLoadWeb("test")
+            repository.identifyAndLoadWeb("test_web")
         }
+    }
+
+    fun getBloodweb(webName: String) = viewModelScope.launch {
+        repository.identifyAndLoadWeb(webName)
     }
 
     fun insert(node: Node) = viewModelScope.launch {
