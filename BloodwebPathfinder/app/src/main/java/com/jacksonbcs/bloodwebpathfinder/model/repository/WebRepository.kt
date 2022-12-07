@@ -42,15 +42,6 @@ class WebRepository(
         nodeRoomDao.deleteAll()
     }
 
-    // TODO: DELETE THIS
-    @WorkerThread
-    suspend fun uploadWeb(name: String) {
-        Log.d(TAG, "REPOSITORY UPLOAD")
-        allNodes.asLiveData().value?.let {
-            nodeFirestoreDao.uploadWeb(name, it)
-        }
-    }
-
     private fun buildNode(map: Map<String, Any>): Node {
 
         return Node(

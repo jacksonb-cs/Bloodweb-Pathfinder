@@ -412,7 +412,7 @@
             android:text="DOWNLOAD"
             android:onClick="@{() -> viewmodel.testWebLoad()}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
