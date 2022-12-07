@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        webViewModel.webRadius = (getScreenWidth() * 0.4).toInt()
+        // TODO: This 0.42 factor bad?
+        webViewModel.webRadius = (getScreenWidth() * 0.42).toInt()
         binding.viewmodel = webViewModel
         binding.lifecycleOwner = this
 
@@ -75,6 +76,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getImageFileName(uri: String?): String? {
         // TODO: Could do something about the empty string here
+        // TODO: This is not general! Only works on the emulator...
         return uri
             ?.split("/")?.last()
             ?.split(".")?.first()

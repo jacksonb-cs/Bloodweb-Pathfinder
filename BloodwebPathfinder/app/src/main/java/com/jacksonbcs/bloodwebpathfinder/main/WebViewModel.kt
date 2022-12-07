@@ -72,11 +72,7 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
         repository.identifyAndLoadWeb(webName)
     }
 
-    fun insert(node: Node) = viewModelScope.launch {
-        repository.insert(node)
-    }
-
-    fun update(node: Node) = viewModelScope.launch {
+    private fun update(node: Node) = viewModelScope.launch {
         repository.update(node)
     }
 
