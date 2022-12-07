@@ -29,20 +29,4 @@ class NodeFirestoreDao(private val db: FirebaseFirestore) {
                 }
         }
     }
-
-    // TODO: DELETE THIS
-    @WorkerThread
-    suspend fun uploadWeb(name: String, nodes: List<Node>) {
-
-        Log.d(TAG, "WE SHOULD BE UPLOADING!")
-        // If you need to overwrite a collection, just delete over the CLI -_-
-        val collection = db.collection(name)
-        nodes.forEach {
-            collection.document().set(it)
-        }
-    }
-
-    private companion object {
-        const val TAG = "NodeFirestoreDao"
-    }
 }
