@@ -79,7 +79,7 @@ fun drawEdges(
         getDestinationVertex(vertices, srcVertex, edge.second)?.let { destVertex ->
             val edgePath = EdgePath(
                 srcVertex.xPos + xOffset,
-                srcVertex.yPos + yOffset,  // TODO: Determine if the negatives are appropriate!
+                srcVertex.yPos + yOffset,
                 destVertex.xPos + xOffset,
                 destVertex.yPos + yOffset,
                 EdgePath.EdgeType.ACTIVE    // TODO: Can probably get this from destVertex
@@ -121,8 +121,8 @@ private fun getDestinationVertex(
     // Coordinates here refers to graph coordinates on the web (ring, position)
     val destVertexCoordinates = when (srcVertex.node.ring) {
         0 -> getInnerRingNodeNeighborCoords(srcVertex.node.position, neighborSequence)
-        1 -> Pair(srcVertex.node.ring, srcVertex.node.position) // TODO
-        2 -> Pair(srcVertex.node.ring, srcVertex.node.position) // TODO
+        1 -> getMidRingNodeNeighborCoords(srcVertex.node.position, neighborSequence)
+        2 -> getOuterRingNodeNeighborCoords(srcVertex.node.position, neighborSequence)
         else -> Pair(srcVertex.node.ring, srcVertex.node.position)  // TODO: Best way to handle?
     }
 
@@ -130,16 +130,43 @@ private fun getDestinationVertex(
     return vertices?.get(destVertexCoordinates)
 }
 
+// Get graph coordinates of neighbor of inner ring (ring=0) node
 private fun getInnerRingNodeNeighborCoords(position: Int, neighborSequence: Int): Pair<Int, Int> {
 
     return if (neighborSequence == 4) {
-        // Destination node is clockwise neighbor in the same ring
+        // Destination node is the clockwise neighbor in the same ring
         Pair(0, (position + 1) % 6)
     }
     else {
         // Destination node is in the middle ring
-        val p = position + neighborSequence - 2
-        Pair(1, (2 * p) % 12)
+        val q = position * 2
+        Pair(1, (q + neighborSequence - 2) % 12)
+    }
+}
+
+// Get graph coordinates of neighbor of middle ring (ring=1) node
+private fun getMidRingNodeNeighborCoords(position: Int, neighborSequence: Int): Pair<Int, Int> {
+
+    return if (neighborSequence == 2) {
+        // Destination node is the clockwise neighbor in the same ring
+        Pair(1, (position + 1) % 12)
+    }
+    else {
+        Pair(2, (position + neighborSequence) % 12)
+    }
+}
+
+// Get graph coordinates of neighbor of outer ring (ring=2) node
+private fun getOuterRingNodeNeighborCoords(position: Int, neighborSequence: Int): Pair<Int, Int> {
+
+    return if (neighborSequence == 0) {
+        // Destination node is the clockwise neighbor in the same ring
+        Pair(2, (position + 1) % 12)
+    }
+    else {
+        // This is just its own coords...
+        // TODO: Enforce some rules
+        Pair(2, position)
     }
 }
 
