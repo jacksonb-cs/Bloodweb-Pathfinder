@@ -2,6 +2,7 @@ package com.jacksonbcs.bloodwebpathfinder.model.repository
 
 import android.util.Log
 import androidx.annotation.WorkerThread
+import androidx.lifecycle.asLiveData
 import com.jacksonbcs.bloodwebpathfinder.model.Node
 import kotlinx.coroutines.flow.Flow
 import kotlinx.serialization.SerializationException
@@ -39,6 +40,15 @@ class WebRepository(
     @WorkerThread
     suspend fun clearWeb() {
         nodeRoomDao.deleteAll()
+    }
+
+    // TODO: DELETE THIS
+    @WorkerThread
+    suspend fun uploadWeb(name: String) {
+        Log.d(TAG, "REPOSITORY UPLOAD")
+        allNodes.asLiveData().value?.let {
+            nodeFirestoreDao.uploadWeb(name, it)
+        }
     }
 
     private fun buildNode(map: Map<String, Any>): Node {

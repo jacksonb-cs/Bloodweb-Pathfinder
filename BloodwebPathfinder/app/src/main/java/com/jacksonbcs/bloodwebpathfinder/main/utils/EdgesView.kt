@@ -3,17 +3,21 @@ package com.jacksonbcs.bloodwebpathfinder.main.utils
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Path
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.jacksonbcs.bloodwebpathfinder.R
+import com.jacksonbcs.bloodwebpathfinder.model.EdgePath
 
 class EdgesView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
-//    val edges = mutableListOf<>()
-//        HashMap<Pair<Float, Float>, MutableList<Pair<Float, Float>>>(WEB_SIZE)
     private val activePathPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val boughtPathPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+    var edges: List<EdgePath> = mutableListOf()
+    var path = Path()
 
     init {
         boughtPathPaint.strokeWidth = 12F
@@ -28,17 +32,16 @@ class EdgesView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-//        edgePath.reset()
-//        edgePath.moveTo(10F, 10F)
-//        edgePath.lineTo(50F, 100F)
-//        canvas.drawPath(edgePath, activePathPaint)
+        // Draw every edge here
+        edges.forEach { edge ->
+            path.reset()
+            path.moveTo(edge.srcX, edge.srcY)
+            path.lineTo(edge.destX, edge.destY)
+            canvas.drawPath(path, activePathPaint)  // TODO: Change paint according to edge status
+        }
     }
 
     private companion object {
-        // TODO: Possibly delete
-        // 6 * 6 + 12 * 3 + 12 * 1
-        const val MAX_EDGE_COUNT = 84
-
-        const val WEB_SIZE = 30
+        const val TAG = "EdgesView"
     }
 }

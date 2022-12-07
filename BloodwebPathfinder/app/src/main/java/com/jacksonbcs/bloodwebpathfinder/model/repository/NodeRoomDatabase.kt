@@ -64,10 +64,13 @@ abstract class NodeRoomDatabase : RoomDatabase() {
                     Node(1, 0, Node.Type.OFFERING, Node.Color.PURPLE, mutableListOf())
                 )
                 nodeDao.insert(
-                    Node(1, 2, Node.Type.ITEM, Node.Color.GREEN, mutableListOf())
+                    Node(1, 2, Node.Type.ITEM, Node.Color.GREEN, mutableListOf(1))
                 )
                 nodeDao.insert(
-                    Node(2, 2, Node.Type.PERK, Node.Color.YELLOW, mutableListOf())
+                    Node(2, 2, Node.Type.PERK, Node.Color.YELLOW, mutableListOf(0))
+                )
+                nodeDao.insert(
+                    Node(2, 3, Node.Type.OFFERING, Node.Color.IRIDESCENT, mutableListOf())
                 )
             }
         }

@@ -18,7 +18,8 @@
         <!-- Edges Canvas -->
         <com.jacksonbcs.bloodwebpathfinder.main.utils.EdgesView
             android:id="@+id/edges_view"
-            app:webEdges="@{viewmodel.edges}"
+            app:vertices="@{viewmodel.vertices}"
+            app:edges="@{viewmodel.edges}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -43,7 +44,9 @@
         <!-- 12 o'clock -->
         <ImageView
             android:id="@+id/node_0_0"
-            app:associatedVertex="@{viewmodel.vertex_0_0}"
+            app:ring="@{0}"
+            app:position="@{0}"
+            app:vertices="@{viewmodel.vertices}"
             android:onClick="@{() -> viewmodel.onNodeClick(0, 0)}"
             style="@style/web_node"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -343,14 +346,24 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- TODO: Delete these testing buttons! -->
         <Button
-            android:id="@+id/button"
+            android:id="@+id/testDownloadButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TEST"
+            android:text="DOWNLOAD"
             android:onClick="@{() -> viewmodel.testWebLoad()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/testUploadButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPLOAD"
+            android:onClick="@{() -> viewmodel.uploadTestWeb()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/testDownloadButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

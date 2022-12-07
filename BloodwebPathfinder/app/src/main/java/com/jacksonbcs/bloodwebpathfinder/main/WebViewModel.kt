@@ -33,7 +33,7 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
     }
 
     // HashMap: <ring, position> -> Vertex
-    val vertices: LiveData<java.util.HashMap<Pair<Int, Int>, Vertex>?> =
+    val vertices: LiveData<HashMap<Pair<Int, Int>, Vertex>?> =
         Transformations.map(web) { web ->
             web.vertices.value
         }
@@ -187,7 +187,15 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
     // TODO: DELETE THIS
     fun testWebLoad() {
         viewModelScope.launch {
-            repository.identifyAndLoadWeb("test_web")
+            repository.identifyAndLoadWeb("original_test")
+        }
+    }
+
+    // TODO: DELETE THIS ALSO
+    fun uploadTestWeb() {
+        Log.d(TAG, "VIEWMODEL UPLOAD")
+        viewModelScope.launch {
+            repository.uploadWeb("original_test")
         }
     }
 
