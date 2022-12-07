@@ -404,7 +404,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- TODO: Delete these testing buttons! -->
+        <!-- TODO: Delete this! -->
         <Button
             android:id="@+id/testDownloadButton"
             android:layout_width="wrap_content"
@@ -413,15 +413,6 @@
             android:onClick="@{() -> viewmodel.testWebLoad()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/testUploadButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UPLOAD"
-            android:onClick="@{() -> viewmodel.uploadTestWeb()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/testDownloadButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

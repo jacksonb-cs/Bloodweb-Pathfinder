@@ -64,15 +64,7 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
     // TODO: DELETE THIS
     fun testWebLoad() {
         viewModelScope.launch {
-            repository.identifyAndLoadWeb("original_test")
-        }
-    }
-
-    // TODO: DELETE THIS ALSO
-    fun uploadTestWeb() {
-        Log.d(TAG, "VIEWMODEL UPLOAD")
-        viewModelScope.launch {
-            repository.uploadWeb("original_test")
+            repository.identifyAndLoadWeb("test")
         }
     }
 
@@ -85,11 +77,6 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
     }
 
     companion object {
-
-        private val NULL_VERTEX = Vertex(
-            Node(0, 0, null, null, mutableListOf()),
-            0
-        )
 
         private const val DEFAULT_RADIUS = 400
         private const val TAG = "WebViewModel"
