@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -42,6 +44,25 @@ class MainActivity : AppCompatActivity() {
 
             imageSelectionResultLauncher.launch(intent)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.appbar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        // Determine which item was selected
+        return when (item.itemId) {
+            R.id.start_simulation -> {
+                TODO()
+                true
+            }
+            R.id.settings -> { /* Absolutely nothing, tee-hee */ true}
+            else -> super.onOptionsItemSelected(item)
+        }
+
     }
 
     private fun getImageSelectionResultLauncher(): ActivityResultLauncher<Intent> {
