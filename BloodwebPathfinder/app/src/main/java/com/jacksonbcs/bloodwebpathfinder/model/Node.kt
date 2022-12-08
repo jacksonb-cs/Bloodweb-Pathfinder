@@ -18,7 +18,8 @@ data class Node(
     val position: Int,
     @ColumnInfo(name = "type") var type: Type?,
     @ColumnInfo(name = "color") var color: Color?,
-    @ColumnInfo(name = "neighbors") val neighbors: MutableList<Int>
+    @ColumnInfo(name = "neighbors") val neighbors: MutableList<Int>,
+    @ColumnInfo(name = "state") var state: State? = null
 ) {
 
     fun cycleColor() {
@@ -101,5 +102,13 @@ data class Node(
                 return values().first { it.cost == value }
             }
         }
+    }
+
+    // State of the node
+    enum class State {
+        INACTIVE,
+        ACTIVE,
+        BOUGHT,
+        CONSUMED
     }
 }

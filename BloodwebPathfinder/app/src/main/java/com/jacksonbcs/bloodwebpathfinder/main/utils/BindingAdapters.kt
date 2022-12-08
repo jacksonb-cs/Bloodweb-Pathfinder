@@ -28,6 +28,7 @@ fun setVertex(
 
     // Set display properties
     val nodeIcon = getNodeIcon(vertex?.node)
+
     if (vertex != null && nodeIcon != null) {
         view.setImageDrawable(ContextCompat.getDrawable(view.context, nodeIcon))
         view.visibility = View.VISIBLE
@@ -51,6 +52,12 @@ fun drawEdges(
     val yOffset = (-view.y) + (view.height / 2)
 
     // Iterate over all edges
+    // TODO: We do a lot of looping, don't we...?
+    //  - Viewmodel
+    //  - BindingAdapter (here)
+    //  - EdgeView
+    //  This is all virtually the same data. Maybe DataBinding wasn't a great choice for
+    //  this particular project.
     edges?.forEach { edge ->
 
         val srcVertex = edge.first
@@ -60,7 +67,7 @@ fun drawEdges(
                 srcVertex.yPos + yOffset,
                 destVertex.xPos + xOffset,
                 destVertex.yPos + yOffset,
-                EdgePath.EdgeType.ACTIVE    // TODO: Can probably get this from destVertex
+                getEdgeType(srcVertex.node.state, destVertex.node.state)
             )
             edgePaths.add(edgePath)
         }
@@ -79,7 +86,7 @@ fun drawEdges(
                 it.yPos + yOffset,
                 xOffset,
                 yOffset,
-                EdgePath.EdgeType.ACTIVE    // TODO: Generalize this
+                Node.State.ACTIVE   // TODO: These can be bought/consumed too!
             )
             edgePaths.add(edgePath)
         }
@@ -88,6 +95,27 @@ fun drawEdges(
     // Pass edges and redraw the canvas
     view.edges = edgePaths
     view.invalidate()
+}
+
+private fun getEdgeType(srcState: Node.State?, destState: Node.State?): Node.State {
+
+    return if (
+        srcState == Node.State.INACTIVE
+        || destState == Node.State.INACTIVE
+        || srcState == Node.State.CONSUMED
+        || destState == Node.State.CONSUMED
+    ) {
+        Node.State.INACTIVE
+    }
+    // TODO: This isn't technically true, but we would need to store the order of node
+    //  purchases in order to actually emulate the game's behavior...
+    else if (srcState == Node.State.BOUGHT && destState == Node.State.BOUGHT) {
+        // TODO: IDE acting strange here... check here if you see bugs!
+        Node.State.BOUGHT
+    }
+    else {
+        Node.State.ACTIVE
+    }
 }
 
 private fun getDestinationVertex(
@@ -148,19 +176,92 @@ private fun getOuterRingNodeNeighborCoords(position: Int, neighborSequence: Int)
     }
 }
 
-// Returns null if the node, its color, or its type are null
+/* TODO: Listen, I'm out of time, and I can't think of a good way to use arrays
+ *  since turning this whole thing into an object is messing things up.
+ *  As I'm typing this, I've realized what the problem is. But again, I don't have time.
+ */
+
 fun getNodeIcon(node: Node?): Int? {
-    // First determine item type
-    return when (node?.type) {
-        Node.Type.ADDON -> getAddonIcon(node.color)
-        Node.Type.ITEM -> getItemIcon(node.color)
-        Node.Type.PERK -> getPerkIcon(node.color)
-        Node.Type.OFFERING -> getOfferingIcon(node.color)
+    return when (node?.state) {
+        Node.State.ACTIVE -> getActiveNodeIcon(node)
+        Node.State.INACTIVE -> getInactiveNodeIcon(node)
         else -> null
     }
 }
 
-fun getAddonIcon(color: Node.Color?): Int? {
+// ===== INACTIVE ===== \\
+
+fun getInactiveNodeIcon(node: Node?): Int? {
+    // First determine item type
+    return when (node?.type) {
+        Node.Type.ADDON -> getInactiveAddonIcon(node.color)
+        Node.Type.ITEM -> getInactiveItemIcon(node.color)
+        Node.Type.PERK -> getInactivePerkIcon(node.color)
+        Node.Type.OFFERING -> getInactiveOfferingIcon(node.color)
+        else -> null
+    }
+}
+
+fun getInactiveAddonIcon(color: Node.Color?): Int? {
+    // Addons can be any color except iridescent
+    return when (color) {
+        Node.Color.BROWN -> R.drawable.brown_addon_inactive
+        Node.Color.YELLOW -> R.drawable.yellow_addon_inactive
+        Node.Color.GREEN -> R.drawable.green_addon_inactive
+        Node.Color.PURPLE -> R.drawable.purple_addon_inactive
+        else -> null
+    }
+}
+
+fun getInactiveItemIcon(color: Node.Color?): Int? {
+    // Items can be any color
+    return when (color) {
+        Node.Color.BROWN -> R.drawable.brown_item_inactive
+        Node.Color.YELLOW -> R.drawable.yellow_item_inactive
+        Node.Color.GREEN -> R.drawable.green_item_inactive
+        Node.Color.PURPLE -> R.drawable.purple_item_inactive
+        Node.Color.IRIDESCENT -> R.drawable.iridescent_item_inactive
+        else -> null
+    }
+}
+
+fun getInactivePerkIcon(color: Node.Color?): Int? {
+    // Perks can only be YELLOW, GREEN, or PURPLE
+    return when (color) {
+        Node.Color.YELLOW -> R.drawable.yellow_perk_inactive
+        Node.Color.GREEN -> R.drawable.green_perk_inactive
+        Node.Color.PURPLE -> R.drawable.purple_perk_inactive
+        else -> null
+    }
+}
+
+fun getInactiveOfferingIcon(color: Node.Color?): Int? {
+    // Offerings can be any color
+    return when (color) {
+        Node.Color.BROWN -> R.drawable.brown_offering_inactive
+        Node.Color.YELLOW -> R.drawable.yellow_offering_inactive
+        Node.Color.GREEN -> R.drawable.green_offering_inactive
+        Node.Color.PURPLE -> R.drawable.purple_offering_inactive
+        Node.Color.IRIDESCENT -> R.drawable.iridescent_offering_inactive
+        else -> null
+    }
+}
+
+// ===== ACTIVE ===== \\
+
+// Returns null if the node, its color, or its type are null
+fun getActiveNodeIcon(node: Node?): Int? {
+    // First determine item type
+    return when (node?.type) {
+        Node.Type.ADDON -> getActiveAddonIcon(node.color)
+        Node.Type.ITEM -> getActiveItemIcon(node.color)
+        Node.Type.PERK -> getActivePerkIcon(node.color)
+        Node.Type.OFFERING -> getActiveOfferingIcon(node.color)
+        else -> null
+    }
+}
+
+fun getActiveAddonIcon(color: Node.Color?): Int? {
     // Addons can be any color except iridescent
     return when (color) {
         Node.Color.BROWN -> R.drawable.brown_addon_active
@@ -171,7 +272,7 @@ fun getAddonIcon(color: Node.Color?): Int? {
     }
 }
 
-fun getItemIcon(color: Node.Color?): Int? {
+fun getActiveItemIcon(color: Node.Color?): Int? {
     // Items can be any color
     return when (color) {
         Node.Color.BROWN -> R.drawable.brown_item_active
@@ -183,7 +284,7 @@ fun getItemIcon(color: Node.Color?): Int? {
     }
 }
 
-fun getPerkIcon(color: Node.Color?): Int? {
+fun getActivePerkIcon(color: Node.Color?): Int? {
     // Perks can only be YELLOW, GREEN, or PURPLE
     return when (color) {
         Node.Color.YELLOW -> R.drawable.yellow_perk_active
@@ -193,7 +294,7 @@ fun getPerkIcon(color: Node.Color?): Int? {
     }
 }
 
-fun getOfferingIcon(color: Node.Color?): Int? {
+fun getActiveOfferingIcon(color: Node.Color?): Int? {
     // Offerings can be any color
     return when (color) {
         Node.Color.BROWN -> R.drawable.brown_offering_active

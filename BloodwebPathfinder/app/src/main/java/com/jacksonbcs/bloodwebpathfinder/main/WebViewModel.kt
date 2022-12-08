@@ -17,6 +17,14 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
             val edgeList = mutableListOf<Pair<Vertex, Int>>()
 
             for (node in nodeList) {
+                // Set statuses of nodes that have not yet been set
+                if (node.state == null) {
+                    if (node.ring == 0)
+                        node.state = Node.State.ACTIVE
+                    else
+                        node.state = Node.State.INACTIVE
+                }
+
                 // Wrap nodes in vertices and later store in web
                 val vertex = Vertex(node, webRadius ?: 0)
                 nodeMap[Pair(node.ring, node.position)] = vertex
@@ -60,18 +68,11 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
         }
     }
 
-    // TODO: DELETE THIS
-    fun testWebLoad() {
-        viewModelScope.launch {
-            repository.identifyAndLoadWeb("test_web")
-        }
-    }
-
     fun getBloodweb(webName: String) = viewModelScope.launch {
         repository.identifyAndLoadWeb(webName)
     }
 
-    private fun update(node: Node) = viewModelScope.launch {
+    fun update(node: Node) = viewModelScope.launch {
         repository.update(node)
     }
 

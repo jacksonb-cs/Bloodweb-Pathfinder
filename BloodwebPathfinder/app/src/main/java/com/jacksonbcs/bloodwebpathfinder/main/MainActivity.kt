@@ -17,13 +17,19 @@ import androidx.databinding.DataBindingUtil
 import com.jacksonbcs.bloodwebpathfinder.BloodwebPathfinderApp
 import com.jacksonbcs.bloodwebpathfinder.R
 import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
+import com.jacksonbcs.bloodwebpathfinder.main.simulation.Adversary
+import com.jacksonbcs.bloodwebpathfinder.main.simulation.Player
+import com.jacksonbcs.bloodwebpathfinder.main.simulation.Simulation
 import com.jacksonbcs.bloodwebpathfinder.main.utils.WebViewModelFactory
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
     private val webViewModel: WebViewModel by viewModels {
         WebViewModelFactory((application as BloodwebPathfinderApp).repository)
     }
+
+    // Handles user image selection
     private val imageSelectionResultLauncher = getImageSelectionResultLauncher()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +38,7 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        // TODO: This 0.42 factor bad?
-        webViewModel.webRadius = (getScreenWidth() * 0.42).toInt()
+        webViewModel.webRadius = (getScreenWidth() * webRadiusScale).toInt()
         binding.viewmodel = webViewModel
         binding.lifecycleOwner = this
 
@@ -51,18 +56,27 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    // TODO: Could provide option to change simulation speed
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         // Determine which item was selected
         return when (item.itemId) {
             R.id.start_simulation -> {
-                TODO()
+                startSimulation()
                 true
             }
             R.id.settings -> { /* Absolutely nothing, tee-hee */ true}
             else -> super.onOptionsItemSelected(item)
         }
+    }
 
+    // Run simulation on non-UI thread
+    // TODO: Handle calling this method while a simulation is still/already running
+    private fun startSimulation() {
+        val coroutineDispatcher = Dispatchers.Default
+        CoroutineScope(coroutineDispatcher).launch {
+            Simulation(webViewModel, Simulation.SimulationSpeed.MEDIUM).start()
+        }
     }
 
     private fun getImageSelectionResultLauncher(): ActivityResultLauncher<Intent> {
@@ -119,7 +133,8 @@ class MainActivity : AppCompatActivity() {
         return metrics.widthPixels
     }
 
-    companion object {
+    private companion object {
+        const val webRadiusScale = 0.42
         const val TAG = "MainActivity"
     }
 }
