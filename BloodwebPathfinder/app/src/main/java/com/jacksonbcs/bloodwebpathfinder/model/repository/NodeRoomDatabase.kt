@@ -28,7 +28,7 @@ abstract class NodeRoomDatabase : RoomDatabase() {
                     "node_database"
                 )
                     // Can add a callback here to do something on DB creation
-                    .addCallback(NodeDatabaseCallback(scope))
+//                    .addCallback(NodeDatabaseCallback(scope))
                     .build()
 
                 INSTANCE = instance
