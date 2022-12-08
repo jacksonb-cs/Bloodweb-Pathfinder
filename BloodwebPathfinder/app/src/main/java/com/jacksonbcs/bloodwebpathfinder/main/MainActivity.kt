@@ -6,7 +6,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -17,8 +16,6 @@ import androidx.databinding.DataBindingUtil
 import com.jacksonbcs.bloodwebpathfinder.BloodwebPathfinderApp
 import com.jacksonbcs.bloodwebpathfinder.R
 import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
-import com.jacksonbcs.bloodwebpathfinder.main.simulation.Adversary
-import com.jacksonbcs.bloodwebpathfinder.main.simulation.Player
 import com.jacksonbcs.bloodwebpathfinder.main.simulation.Simulation
 import com.jacksonbcs.bloodwebpathfinder.main.utils.WebViewModelFactory
 import kotlinx.coroutines.*
@@ -75,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     private fun startSimulation() {
         val coroutineDispatcher = Dispatchers.Default
         CoroutineScope(coroutineDispatcher).launch {
-            Simulation(webViewModel, Simulation.SimulationSpeed.MEDIUM).start()
+            Simulation(webViewModel, Simulation.SimulationSpeed.SLOW).start()
         }
     }
 
