@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     // Handles user image selection
     private val imageSelectionResultLauncher = getImageSelectionResultLauncher()
 
+    // Speed of simulation (set by user in the appbar menu)
+    private var simulationSpeed = Simulation.Speed.SLOW
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -62,7 +65,18 @@ class MainActivity : AppCompatActivity() {
                 startSimulation()
                 true
             }
-            R.id.settings -> { /* Absolutely nothing, tee-hee */ true}
+            R.id.speed_slow -> {
+                simulationSpeed = Simulation.Speed.SLOW
+                true
+            }
+            R.id.speed_medium -> {
+                simulationSpeed = Simulation.Speed.MEDIUM
+                true
+            }
+            R.id.speed_fast -> {
+                simulationSpeed = Simulation.Speed.FAST
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -72,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     private fun startSimulation() {
         val coroutineDispatcher = Dispatchers.Default
         CoroutineScope(coroutineDispatcher).launch {
-            Simulation(webViewModel, Simulation.SimulationSpeed.SLOW).start()
+            Simulation(webViewModel, simulationSpeed).start()
         }
     }
 

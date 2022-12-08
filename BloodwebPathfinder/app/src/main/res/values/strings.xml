@@ -4,5 +4,7 @@
     <string name="center_node_description">Center Node</string>
     <string name="image_select_content_desc">Select an image of a Bloodweb.</string>
     <string name="simulate_menu_title">Simulate Optimal Route</string>
-    <string name="settings_menu_title">Settings</string>
+    <string name="speed_slow_text">SLOW</string>
+    <string name="speed_medium_text">MEDIUM</string>
+    <string name="speed_fast_text">FAST</string>
 </resources>

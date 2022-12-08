@@ -13,8 +13,8 @@ import kotlinx.coroutines.delay
  *  Hopefully I can come back to make it both interactive and informative
  *  (maybe after overhauling the way the edges in the graph are stored).
  */
-class Simulation(val viewModel: WebViewModel, speed: SimulationSpeed) {
-    
+class Simulation(val viewModel: WebViewModel, speed: Speed) {
+
     private val simSpeed = speed.value
     private val vertices = viewModel.vertices.value
 
@@ -38,6 +38,7 @@ class Simulation(val viewModel: WebViewModel, speed: SimulationSpeed) {
         consumeNode(getVertex(0, 0), true, simSpeed / 4)
         consumeNode(getVertex(1, 11), true, simSpeed / 4)
         consumeNode(getVertex(2, 11), true)
+        // TODO: Finish simulation
     }
 
     private fun getVertex(ring: Int, position: Int): Vertex? {
@@ -83,9 +84,9 @@ class Simulation(val viewModel: WebViewModel, speed: SimulationSpeed) {
         // TODO: This should probably go in the viewmodel + the appbar menu get an option for it
     }
 
-    enum class SimulationSpeed(val value: Long) {
+    enum class Speed(val value: Long) {
         SLOW(1250),
         MEDIUM(500),
-        FAST(250)
+        FAST(200)
     }
 }

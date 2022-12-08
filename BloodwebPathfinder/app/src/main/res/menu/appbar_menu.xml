@@ -7,7 +7,15 @@
         android:icon="@drawable/ic_baseline_monetization_on_24"
         app:showAsAction="ifRoom" />
 
-    <item android:id="@+id/settings"
-        android:title="@string/settings_menu_title"
+    <item android:id="@+id/speed_slow"
+        android:title="@string/speed_slow_text"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/speed_medium"
+        android:title="@string/speed_medium_text"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/speed_fast"
+        android:title="@string/speed_fast_text"
         app:showAsAction="never" />
 </menu>
