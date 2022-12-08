@@ -86,7 +86,7 @@ fun drawEdges(
                 it.yPos + yOffset,
                 xOffset,
                 yOffset,
-                Node.State.ACTIVE   // TODO: These can be bought/consumed too!
+                getCenterEdgeType(it.node.state)
             )
             edgePaths.add(edgePath)
         }
@@ -99,7 +99,12 @@ fun drawEdges(
 
 private fun getEdgeType(srcState: Node.State?, destState: Node.State?): Node.State {
 
-    return if (
+    // TODO: There are some cases where bought nodes activate edges that this doesn't catch.
+    //  I'm just going to deal with that in the simulation for this project.
+    return if (srcState == Node.State.CONSUMED && destState == Node.State.CONSUMED) {
+        Node.State.CONSUMED
+    }
+    else if (
         srcState == Node.State.INACTIVE
         || destState == Node.State.INACTIVE
         || srcState == Node.State.CONSUMED
@@ -116,6 +121,16 @@ private fun getEdgeType(srcState: Node.State?, destState: Node.State?): Node.Sta
     else {
         Node.State.ACTIVE
     }
+}
+
+private fun getCenterEdgeType(nodeState: Node.State?): Node.State {
+
+    val genericEdgeType = getEdgeType(nodeState, nodeState)
+    // Behavior functions similarly to generic edges, only these cannot be consumed edges
+    return if (genericEdgeType == Node.State.CONSUMED)
+        Node.State.INACTIVE
+    else
+        genericEdgeType
 }
 
 private fun getDestinationVertex(

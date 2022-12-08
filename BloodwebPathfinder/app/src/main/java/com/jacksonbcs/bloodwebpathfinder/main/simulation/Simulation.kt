@@ -63,7 +63,7 @@ class Simulation(val viewModel: WebViewModel, speed: SimulationSpeed) {
 
     // Reset the state of all nodes in the graph to active
     private suspend fun resetNodeStates(vertex: Vertex) {
-        // TODO
+        // TODO: This should probably go in the viewmodel + the appbar menu get an option for it
     }
 
     enum class SimulationSpeed(val value: Long) {
