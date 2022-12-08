@@ -1,38 +1,14 @@
-package com.jacksonbcs.bloodwebpathfinder.util
+package com.jacksonbcs.bloodwebpathfinder.main.utils
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.jacksonbcs.bloodwebpathfinder.R
-import com.jacksonbcs.bloodwebpathfinder.main.utils.EdgesView
-import com.jacksonbcs.bloodwebpathfinder.model.EdgePath
+import com.jacksonbcs.bloodwebpathfinder.model.utils.EdgePath
 import com.jacksonbcs.bloodwebpathfinder.model.Node
-import com.jacksonbcs.bloodwebpathfinder.model.Vertex
+import com.jacksonbcs.bloodwebpathfinder.model.utils.Vertex
 import java.lang.Math.floorMod
-
-// TODO: DELETE
-@BindingAdapter("app:associatedVertex")
-fun setVertex(view: ImageView, vertex: Vertex?) {
-
-    // Set vertex position
-    view.translationX = 0F
-    view.translationY = 0F
-    view.x += (vertex?.xPos ?: 0.0.toFloat())
-    view.y += (vertex?.yPos ?: 0.0.toFloat())
-
-    // Set display properties
-    if (vertex != null) {
-        getNodeIcon(vertex.node)?.let {
-            view.setImageDrawable(ContextCompat.getDrawable(view.context, it))
-            view.visibility = View.VISIBLE
-        }
-    }
-    else {
-        view.visibility = View.GONE
-    }
-}
 
 @BindingAdapter(value = ["app:vertices", "app:ring", "app:position"])
 fun setVertex(

@@ -1,5 +1,6 @@
 package com.jacksonbcs.bloodwebpathfinder.model
 
+import com.jacksonbcs.bloodwebpathfinder.model.utils.Vertex
 import org.junit.Test
 
 

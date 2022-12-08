@@ -1,6 +1,6 @@
-package com.jacksonbcs.bloodwebpathfinder.model
+package com.jacksonbcs.bloodwebpathfinder.model.utils
 
-import android.util.Log
+import com.jacksonbcs.bloodwebpathfinder.model.Node
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin

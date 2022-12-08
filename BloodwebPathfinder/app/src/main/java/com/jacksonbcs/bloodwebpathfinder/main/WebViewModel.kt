@@ -1,10 +1,9 @@
 package com.jacksonbcs.bloodwebpathfinder.main
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.jacksonbcs.bloodwebpathfinder.model.Node
-import com.jacksonbcs.bloodwebpathfinder.model.Vertex
-import com.jacksonbcs.bloodwebpathfinder.model.Web
+import com.jacksonbcs.bloodwebpathfinder.model.utils.Vertex
+import com.jacksonbcs.bloodwebpathfinder.model.utils.Web
 import com.jacksonbcs.bloodwebpathfinder.model.repository.WebRepository
 import kotlinx.coroutines.launch
 
@@ -19,7 +18,7 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
 
             for (node in nodeList) {
                 // Wrap nodes in vertices and later store in web
-                val vertex = Vertex(node, webRadius ?: DEFAULT_RADIUS)
+                val vertex = Vertex(node, webRadius ?: 0)
                 nodeMap[Pair(node.ring, node.position)] = vertex
 
                 // Store this node's child* edges
@@ -78,7 +77,6 @@ class WebViewModel(private val repository: WebRepository) : ViewModel() {
 
     companion object {
 
-        private const val DEFAULT_RADIUS = 400
         private const val TAG = "WebViewModel"
     }
 }

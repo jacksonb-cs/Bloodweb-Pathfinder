@@ -1,4 +1,4 @@
-package com.jacksonbcs.bloodwebpathfinder.model
+package com.jacksonbcs.bloodwebpathfinder.model.utils
 
 import androidx.room.TypeConverter
 import kotlinx.serialization.decodeFromString

@@ -1,4 +1,4 @@
-package com.jacksonbcs.bloodwebpathfinder.model
+package com.jacksonbcs.bloodwebpathfinder.model.utils
 
 data class EdgePath(
     val srcX: Float,

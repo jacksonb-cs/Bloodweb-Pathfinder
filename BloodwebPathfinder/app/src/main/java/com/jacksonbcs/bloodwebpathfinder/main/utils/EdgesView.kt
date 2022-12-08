@@ -5,11 +5,10 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.jacksonbcs.bloodwebpathfinder.R
-import com.jacksonbcs.bloodwebpathfinder.model.EdgePath
+import com.jacksonbcs.bloodwebpathfinder.model.utils.EdgePath
 
 class EdgesView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
