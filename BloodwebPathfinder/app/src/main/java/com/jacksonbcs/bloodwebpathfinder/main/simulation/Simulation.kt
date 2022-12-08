@@ -38,7 +38,13 @@ class Simulation(val viewModel: WebViewModel, speed: Speed) {
         consumeNode(getVertex(0, 0), true, simSpeed / 4)
         consumeNode(getVertex(1, 11), true, simSpeed / 4)
         consumeNode(getVertex(2, 11), true)
-        // TODO: Finish simulation
+        buyNode(getVertex(0, 4), false)
+        activateNode(getVertex(1, 7), true)
+        consumeNode(getVertex(2, 2), true)
+        buyNode(getVertex(1, 7), true)
+        consumeNode(getVertex(2, 7), true)
+        buyNode(getVertex(0, 2), true)
+        consumeNode(getVertex(1, 6), false)
     }
 
     private fun getVertex(ring: Int, position: Int): Vertex? {
