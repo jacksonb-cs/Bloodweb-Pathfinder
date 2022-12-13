@@ -6,12 +6,14 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.net.toFile
 import androidx.databinding.DataBindingUtil
 import com.jacksonbcs.bloodwebpathfinder.BloodwebPathfinderApp
 import com.jacksonbcs.bloodwebpathfinder.R
@@ -19,6 +21,7 @@ import com.jacksonbcs.bloodwebpathfinder.databinding.ActivityMainBinding
 import com.jacksonbcs.bloodwebpathfinder.main.simulation.Simulation
 import com.jacksonbcs.bloodwebpathfinder.main.utils.WebViewModelFactory
 import kotlinx.coroutines.*
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -104,10 +107,16 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
             else {
-                val fileName = getImageFileName(result.data?.data?.lastPathSegment)
-                if (fileName != null) {
+                val imageUri = result?.data?.data?.path
+//                val fileName = getImageFileName(result.data?.data?.lastPathSegment)
+                if (imageUri != null) {
+                    val imageFile = File(imageUri)
+                    val imageName = imageFile.nameWithoutExtension
+
+                    toastDebugMessage(imageName)
                     // Refresh view-model state with corresponding Bloodweb
-                    webViewModel.getBloodweb(fileName)
+                    webViewModel.getBloodweb(imageName)
+//                    webViewModel.getBloodweb(fileName)
                 }
                 else {
                     Toast.makeText(
@@ -142,6 +151,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         return metrics.widthPixels
+    }
+
+    // TODO: Remove this!
+    private fun toastDebugMessage(message: String) {
+        Toast.makeText(
+            applicationContext,
+            message,
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     private companion object {
