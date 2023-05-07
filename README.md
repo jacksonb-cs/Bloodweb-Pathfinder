@@ -1,5 +1,5 @@
 # Bloodweb Pathfinder
-Unofficial companion Android app for Dead by Daylight, an asymmetric survival-horror game by Behavior Interactive Inc. Developed in Kotlin for a course in mobile programming at the University of Arkansas.
+Unofficial companion app for Dead by Daylight, an asymmetric survival-horror game by Behavior Interactive Inc. Developed in Kotlin for Android in partial fulfillment of a course in mobile programming at the University of Arkansas.
 
 ## Problem
 
@@ -9,7 +9,7 @@ Since its development, new features added to the original game have caused Blood
 <img src="https://github.com/jacksonb-cs/Bloodweb-Pathfinder/blob/main/Screenshots/Report%20Example%20Web.png?raw=true" width="400">
 </p>
 
-Although there is a lot going on, the only things of note (for the purposes of judging my project at a glance) are:
+Although the above image is rather busy, the only things of note (in order to judge my project at a glance) are:
 - Nodes (shown as white, circled icons)
 - Node's background color
 - Node's background shape
