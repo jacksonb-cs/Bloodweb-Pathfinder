@@ -44,4 +44,8 @@ Bloodweb Pathfinder's end goal was to provide the ability to take a picture of a
 	<img src="https://github.com/jacksonb-cs/Bloodweb-Pathfinder/blob/main/Screenshots/med_filled_web.png?raw=true" height="600">
 </p>
 
+### Example
+
+Below displays how Bloodweb Pathfinder provides an optimal node purchase order to the user and simulates the adversarial consumption of the web. The speed at which this progresses can be adjusted by the user.
+
 https://user-images.githubusercontent.com/72838970/236655144-b82878e0-1189-4b82-97ae-786f81ab9c84.mp4
